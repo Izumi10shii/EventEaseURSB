@@ -1,6 +1,6 @@
 # EventEaseURSB
 
-An Android Application for URSB Students focusing on Events Organization <br>
+An Android Application for URSB Students focusing on Events Organization <br><br>
 Project Team:
 - Paras, Christian David
 - Ramirez, Rodsef
