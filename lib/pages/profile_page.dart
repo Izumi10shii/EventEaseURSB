@@ -49,7 +49,8 @@ class ProfilePage extends StatelessWidget {
                   border: Border.all(color: Colors.black),
                 ),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
                       padding: EdgeInsets.symmetric(
@@ -57,7 +58,7 @@ class ProfilePage extends StatelessWidget {
                         horizontal: 20,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.blue,
+                        color: Color(0xFF1A2C54),
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(20),
                           topRight: Radius.circular(0),
@@ -91,7 +92,8 @@ class ProfilePage extends StatelessWidget {
                   border: Border.all(color: Colors.black),
                 ),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
                       padding: EdgeInsets.symmetric(
@@ -99,7 +101,7 @@ class ProfilePage extends StatelessWidget {
                         horizontal: 20,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.blue,
+                        color: Color(0xFF1A2C54),
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(20),
                           topRight: Radius.circular(0),
@@ -134,7 +136,8 @@ class ProfilePage extends StatelessWidget {
                   border: Border.all(color: Colors.black),
                 ),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
                       padding: EdgeInsets.symmetric(
@@ -142,7 +145,7 @@ class ProfilePage extends StatelessWidget {
                         horizontal: 20,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.blue,
+                        color: Color(0xFF1A2C54),
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(20),
                           topRight: Radius.circular(0),
@@ -189,7 +192,7 @@ class ProfilePage extends StatelessWidget {
                             horizontal: 40,
                           ),
                           decoration: BoxDecoration(
-                            color: Colors.blue,
+                            color: Color(0xFF1A2C54),
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(20),
                               topRight: Radius.circular(0),
@@ -205,14 +208,20 @@ class ProfilePage extends StatelessWidget {
                             ),
                           ),
                         ),
+                        SizedBox(width: 160,),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor:  Color(0xFF1A2C54),
+                            foregroundColor: Colors.white,
 
-                        ElevatedButton(onPressed: () {}, child: Text("Edit")),
+                          ),
+                          onPressed: () {}, child: Icon(Icons.add)),
                       ],
                     ),
                     SizedBox(width: 40),
                     //put in container
                     Padding(
-                      padding: EdgeInsets.all(0),
+                      padding: EdgeInsets.all(20),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -244,7 +253,7 @@ class ProfilePage extends StatelessWidget {
                         horizontal: 40,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.blue,
+                        color: Color(0xFF1A2C54),
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(20),
                           topRight: Radius.circular(0),
