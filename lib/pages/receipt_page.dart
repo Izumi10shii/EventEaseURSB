@@ -16,9 +16,8 @@ class ReceiptPage extends StatelessWidget {
               title: Container(
                   padding: EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                  color: Colors.grey,
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(10),
+                  color: Color(0xFFECECEC),
+                    borderRadius: BorderRadius.circular(20),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,7 +81,7 @@ class ReceiptPage extends StatelessWidget {
                   width: 360,
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(20),
                   ),
                   child: Center(child: Text("QR CODE")),
                 ),
@@ -90,7 +89,23 @@ class ReceiptPage extends StatelessWidget {
             ),
 
             ListTile(
-              title: ElevatedButton(onPressed: () {}, child: Text("Download")),
+              title: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFF0A1D34),
+                    foregroundColor: Colors.white,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 100,
+                      vertical: 10,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    textStyle: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                onPressed: () {}, child: Text("Download")),
             ),
           ],
         ),

@@ -186,7 +186,7 @@ class ProfilePage extends StatelessWidget {
                         Container(
                           padding: EdgeInsets.symmetric(
                             vertical: 10,
-                            horizontal: 20,
+                            horizontal: 40,
                           ),
                           decoration: BoxDecoration(
                             color: Colors.blue,
@@ -194,7 +194,7 @@ class ProfilePage extends StatelessWidget {
                               topLeft: Radius.circular(20),
                               topRight: Radius.circular(0),
                               bottomLeft: Radius.circular(0),
-                              bottomRight: Radius.circular(40),
+                              bottomRight: Radius.circular(60),
                             ),
                           ),
                           child: Text(
@@ -212,7 +212,7 @@ class ProfilePage extends StatelessWidget {
                     SizedBox(width: 40),
                     //put in container
                     Padding(
-                      padding: EdgeInsets.all(20),
+                      padding: EdgeInsets.all(0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -241,7 +241,7 @@ class ProfilePage extends StatelessWidget {
                     Container(
                       padding: EdgeInsets.symmetric(
                         vertical: 10,
-                        horizontal: 20,
+                        horizontal: 40,
                       ),
                       decoration: BoxDecoration(
                         color: Colors.blue,
@@ -249,7 +249,7 @@ class ProfilePage extends StatelessWidget {
                           topLeft: Radius.circular(20),
                           topRight: Radius.circular(0),
                           bottomLeft: Radius.circular(00),
-                          bottomRight: Radius.circular(40),
+                          bottomRight: Radius.circular(60),
                         ),
                       ),
                       child: Text(
@@ -272,7 +272,23 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
             ),
-            ElevatedButton(onPressed: () {}, child: Text("Save Profile")),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFF0A1D34),
+                    foregroundColor: Colors.white,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 100,
+                      vertical: 10,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    textStyle: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+              onPressed: () {}, child: Text("Save Profile")),
           ],
         ),
       ),
