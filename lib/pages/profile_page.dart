@@ -5,9 +5,7 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return Scaffold(
         body: Center(
           child: ListView(
             children: [
@@ -186,7 +184,7 @@ class ProfilePage extends StatelessWidget {
             ],
           ),
         ),
-      ),
+
     );
   }
 }

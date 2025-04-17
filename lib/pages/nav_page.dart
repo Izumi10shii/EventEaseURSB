@@ -36,9 +36,7 @@ class _NavPageState extends State<NavPage> {
 
   @override
   Widget build(BuildContext context){
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return Scaffold(
         body: _pages[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
@@ -62,7 +60,6 @@ class _NavPageState extends State<NavPage> {
             label: "Profile"),
 
           ])
-      ),
     );
   }
 }

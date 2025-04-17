@@ -5,10 +5,7 @@ class RegisterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(title: Text("Register Page")),
+    return Scaffold(
         body: Center(
           child: Padding(
             padding: EdgeInsets.all(25),
@@ -93,7 +90,7 @@ class RegisterPage extends StatelessWidget {
             ),
           ),
         ),
-      ),
+
     );
   }
 }

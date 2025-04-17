@@ -5,11 +5,6 @@ import 'package:flutter_event_ease/pages/index_page.dart';
 import 'package:flutter_event_ease/pages/register_page.dart';
 import 'package:flutter_event_ease/pages/login_page.dart';
 import 'package:flutter_event_ease/pages/nav_page.dart';
-import 'package:flutter_event_ease/pages/calendar_page.dart';
-import 'package:flutter_event_ease/pages/reminders_page.dart';
-import 'package:flutter_event_ease/pages/profile_page.dart';
-import 'package:flutter_event_ease/pages/nav_page.dart';
-import 'package:flutter_event_ease/pages/event_info_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,7 +24,7 @@ class MyApp extends StatelessWidget {
         '/index_page': (context) => IndexPage(),
         '/nav_page': (context) => NavPage(),
         '/home_page': (context) => HomePage(),
-        '/event_info_page': (context) => EventInfoPage(),
+        '/event_info_page': (context) => EventInfoPage(), 
       },
       home: IndexPage(),
     );

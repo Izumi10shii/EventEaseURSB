@@ -5,9 +5,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return Scaffold(
         body: SafeArea(
           child: Center(
             child: ListView(
@@ -178,7 +176,7 @@ class HomePage extends StatelessWidget {
                               Text("Event Title"),
                               ElevatedButton(
                                 onPressed: () {
-                                  Navigator.pushNamed(context, '\event_info_page');
+                                  Navigator.pushNamed(context, '/event_info_page');
                                 },
                                 child: Text("open"),
                               ),
@@ -193,7 +191,6 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 }

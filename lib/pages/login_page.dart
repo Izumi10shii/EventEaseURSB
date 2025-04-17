@@ -5,10 +5,7 @@ class LoginPage extends StatelessWidget{
 
   @override
   Widget build(BuildContext context){
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(title: Text("Login Page")),
+    return Scaffold(
         body: Center(
           child: Padding(padding: EdgeInsets.all(25),
           child: ListView(
@@ -59,8 +56,6 @@ class LoginPage extends StatelessWidget{
           ),
           )
         ),
-
-      ),
     );
   }
 }
