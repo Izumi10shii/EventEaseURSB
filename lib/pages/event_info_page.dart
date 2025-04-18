@@ -136,6 +136,7 @@ class EventInfoPage extends StatelessWidget {
                             },
                             child: Text("Register for Event"),
                           ),
+
                         ],
                       ),
                     ),
@@ -143,6 +144,9 @@ class EventInfoPage extends StatelessWidget {
                 ),
               ),
             ),
+                          ElevatedButton(onPressed: (){
+                            Navigator.pushNamed(context, 'participants_page');
+                          }, child: Text("View Participants TEMP"))
           ],
         ),
       ),

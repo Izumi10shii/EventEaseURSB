@@ -1,16 +1,4 @@
-start pages
-1. loading page
-2. register or login page
-3. login page
-4. register page
-
-main pages
-1. home
-    > event page
-2. calendar
-3. reminder page
-4. profile page
-
-
-design buttons
-create home and profile page
+Missing
+Admin pages
+Separate Edit pages
+View Registered Students

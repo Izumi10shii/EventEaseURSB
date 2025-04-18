@@ -6,8 +6,9 @@ import 'package:flutter_event_ease/pages/receipt_page.dart';
 import 'package:flutter_event_ease/pages/register_page.dart';
 import 'package:flutter_event_ease/pages/login_page.dart';
 import 'package:flutter_event_ease/pages/nav_page.dart';
-import 'package:flutter_event_ease/pages/receipt_page.dart';
 import 'package:flutter_event_ease/pages/admin_page.dart';
+import 'package:flutter_event_ease/pages/admin_edit_event_page.dart';
+import 'package:flutter_event_ease/pages/participants_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,6 +31,8 @@ class MyApp extends StatelessWidget {
         '/home_page': (context) => HomePage(),
         '/event_info_page': (context) => EventInfoPage(), 
         '/receipt_page': (context) => ReceiptPage(),
+        '/admin_edit_event_page': (context) => AdminEditEventPage(),
+        'participants_page': (context) => ParticipantsPage(),
       },
       home: IndexPage(),
     );
