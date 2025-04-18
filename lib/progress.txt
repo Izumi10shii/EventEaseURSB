@@ -2,3 +2,38 @@ Missing
 Admin pages
 Separate Edit pages
 View Registered Students
+
+FLOW
+INDEX
+1. Register->back to home
+2. Login
+    ->Login as user
+    ->Login as admin
+
+User Pages
+Home
+    ->Click Event>Event_Info>Register for Event>Receipt>Download
+
+Calendar
+    ->Add the Upcoming Events for now
+
+Notifs
+    ->View Events Registered>Push Notifications
+
+Admin Pages
+    ->Click Event>Event_Info>View Participants>
+    ->Add Event BTN->Add new Event
+    ->Edit Event(undecided to add)->
+
+Calendar
+    ->???
+
+Notifs
+    ->Event Manager>Edit Event Details
+    ->Put adding events here
+
+ Profile Page
+    ->Both have the same Profile Page
+    ->Small Adjustment change the Edit Button into one (top right)
+    ->Links to similar page but with text feilds instead
+    
