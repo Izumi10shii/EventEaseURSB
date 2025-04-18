@@ -7,6 +7,7 @@ import 'package:flutter_event_ease/pages/register_page.dart';
 import 'package:flutter_event_ease/pages/login_page.dart';
 import 'package:flutter_event_ease/pages/nav_page.dart';
 import 'package:flutter_event_ease/pages/receipt_page.dart';
+import 'package:flutter_event_ease/pages/admin_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/register_page': (context) => RegisterPage(),
         '/login_page': (context) => LoginPage(),
+        '/admin_page': (context) => AdminPage(),
         '/index_page': (context) => IndexPage(),
         '/nav_page': (context) => NavPage(),
         '/home_page': (context) => HomePage(),
