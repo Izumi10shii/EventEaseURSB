@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
                     child: Text(
                       "EventEase",
                       style: TextStyle(
-                        fontSize: 30,
+                        fontSize: 40,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -28,40 +28,50 @@ class HomePage extends StatelessWidget {
               ),
 
               ListTile(
-                title: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10),
-                  child: SizedBox(
-                    height: 40,
-                    width: 370,
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: "Search Events",
-                        filled: true,
-                        fillColor: const Color.fromARGB(255, 255, 254, 254),
-                        contentPadding: EdgeInsets.symmetric(
-                          vertical: 8,
-                          horizontal: 20,
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        suffixIcon: Icon(Icons.search),
+                title: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Search Events',
+                      hintStyle: TextStyle(color: Colors.grey),
+                      filled: true,
+                      fillColor: Color(
+                        0xFFEFEFEF,
+                      ), // background color inside textfield
+                      contentPadding: EdgeInsets.symmetric(
+                        vertical: 14,
+                        horizontal: 20,
                       ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide: BorderSide(color: Colors.black12),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+
+                        borderSide: BorderSide(
+                          color: Color(0xFF1A2C54),
+                          width: 2,
+                        ),
+                      ),
+                      suffixIcon: Icon(Icons.search),
                     ),
+                    style: TextStyle(color: Colors.black), // typing te
                   ),
                 ),
               ),
 
+              SizedBox(height: 20),
               ListTile(
                 title: Padding(
                   padding: EdgeInsets.only(left: 20),
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      "Filter by College Department",
+                      "College Departments",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                        fontSize: 24,
                       ),
                     ),
                   ),
@@ -69,66 +79,90 @@ class HomePage extends StatelessWidget {
               ),
 
               ListTile(
-                title: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10),
-                  child: Center(
-                    child: Row(
-
-                      
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.purple,
-                            foregroundColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            textStyle: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
+                title: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.purple,
+                          foregroundColor: Colors.white,
+                          elevation: 8,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            side: BorderSide(
+                              color: Colors.white, // Border color
+                              width: 2, // Border width
+                              style:
+                                  BorderStyle
+                                      .solid, // Border style (can be solid, dashed, etc.)
                             ),
                           ),
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/COA_events_page');
-                          },
-                          child: Text("COA"),
+                          textStyle: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                        SizedBox(width: 10,),
-                        ElevatedButton(style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.red,
-                            foregroundColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            textStyle: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),onPressed: () {
-                            Navigator.pushNamed(context, '/COB_events_page');
-                          }, child: Text("COB")),
-                        SizedBox(width: 10,),
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/COA_events_page');
+                        },
+                        child: Text("COA"),
+                      ),
 
-                        ElevatedButton(style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue,
-                            foregroundColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
+                      SizedBox(width: 10),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          elevation: 8,
+                          backgroundColor: Colors.red,
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(
+                              color: Colors.white, // Border color
+                              width: 2, // Border width
+                              style:
+                                  BorderStyle
+                                      .solid, // Border style (can be solid, dashed, etc.)
                             ),
-                            textStyle: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          textStyle: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/COB_events_page');
+                        },
+                        child: Text("COB"),
+                      ),
+                      SizedBox(width: 10),
+
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          elevation: 8,
+                          backgroundColor: Colors.blue,
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            side: BorderSide(
+                              color: Colors.white, // Border color
+                              width: 2, // Border width
+                              style:
+                                  BorderStyle
+                                      .solid, // Border style (can be solid, dashed, etc.)
                             ),
-                          ),onPressed: () {
-                            Navigator.pushNamed(context, '/CCS_events_page');
-                          }, child: Text("CCS")),
-
-                       
-
-                      ],
-                    ),
+                          ),
+                          textStyle: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/CCS_events_page');
+                        },
+                        child: Text("CCS"),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -142,7 +176,7 @@ class HomePage extends StatelessWidget {
                       "Featured Events",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                        fontSize: 24,
                       ),
                     ),
                   ),
@@ -158,137 +192,224 @@ class HomePage extends StatelessWidget {
                       GestureDetector(
                         onTap: () {
                           //Click on First Event Card
-                          Navigator.pushNamed(
-                            context,
-                            '/event_info_page',
-                          );
+                          Navigator.pushNamed(context, '/event_info_page');
                         },
-                      // First Event Card
-                      child: Container(
-                        width: 300,
-                        height: 200,
-                        margin: EdgeInsets.only(
-                          right: 10,
-                        ), // Space between cards
-                        decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            // Date Box
-                            Container(
-                              width: 60,
-                              height: 50,
-                              margin: EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Mar",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                  Text(
-                                    "21",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Spacer(),
-                            Center(
-                              child: Text(
-                                "IMG",
-                                style: TextStyle(
-                                  fontSize: 40,
+                        // First Event Card
+                        child: Container(
+                          width: 300,
+                          height: 200,
+                          margin: EdgeInsets.only(
+                            right: 10,
+                          ), // Space between cards
+                          decoration: BoxDecoration(
+                            color: Color(0xFFD9D9D9),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // Date Box
+                              Container(
+                                width: 60,
+                                height: 55,
+                                margin: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
                                   color: Colors.white,
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "Mar",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                        
+                                      ),
+                                    ),
+                                    Text(
+                                      "21",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                            ),
-                            Spacer(),
-                            Padding(
-                              padding: EdgeInsets.only(left: 10, bottom: 10),
-                              child: Text(
-                                "Intramurals",
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                              Spacer(),
+                              Center(
+                                child: Text(
+                                  "IMG",
+                                  style: TextStyle(
+                                    fontSize: 40,
+                                    color: Colors.white,
+                                  ),
+                                ),
                               ),
-                            ),
-                          ],
-                      )),
+                              
+                              Spacer(),
+                              Padding(
+                                padding: EdgeInsets.only(left: 20, bottom: 10),
+                                child: Text(
+                                  "Intramurals",
+                                  style: TextStyle(fontWeight: FontWeight.bold,
+                                  fontSize: 20),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                       // Second Event Card
-                      Container(
-                        width: 300,
-                        height: 200,
-                        margin: EdgeInsets.only(right: 10),
-                        decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              width: 60,
-                              height: 50,
-                              margin: EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Mar",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                  Text(
-                                    "25",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Spacer(),
-                            Center(
-                              child: Text(
-                                "IMG",
-                                style: TextStyle(
-                                  fontSize: 40,
+                      GestureDetector(
+                        onTap: () {
+                          //Click on First Event Card
+                          Navigator.pushNamed(context, '/event_info_page');
+                        },
+                        // First Event Card
+                        child: Container(
+                          width: 300,
+                          height: 200,
+                          margin: EdgeInsets.only(
+                            right: 10,
+                          ), // Space between cards
+                          decoration: BoxDecoration(
+                            color: Color(0xFFD9D9D9),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // Date Box
+                              Container(
+                                width: 60,
+                                height: 55,
+                                margin: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
                                   color: Colors.white,
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "Mar",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                        
+                                      ),
+                                    ),
+                                    Text(
+                                      "21",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                            ),
-                            Spacer(),
-                            Padding(
-                              padding: EdgeInsets.only(left: 10, bottom: 10),
-                              child: Text(
-                                "Sports Fest",
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                              Spacer(),
+                              Center(
+                                child: Text(
+                                  "IMG",
+                                  style: TextStyle(
+                                    fontSize: 40,
+                                    color: Colors.white,
+                                  ),
+                                ),
                               ),
-                            ),
-                          ],
+                              
+                              Spacer(),
+                              Padding(
+                                padding: EdgeInsets.only(left: 20, bottom: 10),
+                                child: Text(
+                                  "Sports Festival",
+                                  style: TextStyle(fontWeight: FontWeight.bold,
+                                  fontSize: 20),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       // Add more cards as needed
+                      GestureDetector(
+                        onTap: () {
+                          //Click on First Event Card
+                          Navigator.pushNamed(context, '/event_info_page');
+                        },
+                        // First Event Card
+                        child: Container(
+                          width: 300,
+                          height: 200,
+                          margin: EdgeInsets.only(
+                            right: 10,
+                          ), // Space between cards
+                          decoration: BoxDecoration(
+                            color: Color(0xFFD9D9D9),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // Date Box
+                              Container(
+                                width: 60,
+                                height: 55,
+                                margin: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "Mar",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                        
+                                      ),
+                                    ),
+                                    Text(
+                                      "21",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Spacer(),
+                              Center(
+                                child: Text(
+                                  "IMG",
+                                  style: TextStyle(
+                                    fontSize: 40,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              
+                              Spacer(),
+                              Padding(
+                                padding: EdgeInsets.only(left: 20, bottom: 10),
+                                child: Text(
+                                  "Holy Week",
+                                  style: TextStyle(fontWeight: FontWeight.bold,
+                                  fontSize: 20),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),

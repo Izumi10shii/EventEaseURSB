@@ -17,72 +17,147 @@ class LoginPage extends StatelessWidget {
               child: ListView(
                 shrinkWrap: true,
                 children: [
-                  ListTile(title: Text("Event Ease")),
-
                   ListTile(
-                    title: Text("Username/StudentID"),
-                    subtitle: TextField(
-                      decoration: InputDecoration(border: OutlineInputBorder()),
-                    ),
-                  ),
-                  ListTile(
-                    title: Text("Password"),
-                    subtitle: TextField(
-                      decoration: InputDecoration(border: OutlineInputBorder()),
-                    ),
-                  ),
-
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFF0A1D34),
-                        foregroundColor: Colors.white,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 120,
-                          vertical: 10,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        textStyle: TextStyle(
-                          fontSize: 24,
+                    titleAlignment: ListTileTitleAlignment.center,
+                    title: Align(
+                      child: Text(
+                        "Event Ease",
+                        style: TextStyle(
                           fontWeight: FontWeight.bold,
+                          fontSize: 50,
                         ),
                       ),
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/nav_page');
-                      },
-                      child: Text("Login"),
                     ),
                   ),
 
-                  
                   ListTile(
-                    title: Text.rich(
-                      TextSpan(
-                        text: "Are you a new user? ",
-                        style: TextStyle(color: Colors.black),
-                        children: [
-                          TextSpan(
-                            text: "Register Now!",
-                            style: TextStyle(
-                              color: Colors.blue,
-                              decoration: TextDecoration.underline,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            recognizer:
-                                TapGestureRecognizer()
-                                  ..onTap = () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => RegisterPage(),
-                                      ),
-                                    );
-                                  },
+                    title: Text(
+                      "Username/StudentID",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                    subtitle: TextField(
+                      decoration: InputDecoration(
+                        hintText: 'B2023-00290',
+                        hintStyle: TextStyle(color: Colors.grey),
+                        filled: true,
+                        fillColor: Color(
+                          0xFFEFEFEF,
+                        ), // background color inside textfield
+                        contentPadding: EdgeInsets.symmetric(
+                          vertical: 16,
+                          horizontal: 20,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(color: Colors.black12),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(
+                            color: Color(0xFF1A2C54),
+                            width: 2,
                           ),
-                        ],
+                        ),
+                      ),
+                      style: TextStyle(color: Colors.black), // typing te
+                    ),
+                  ),
+
+                  ListTile(
+                    title: Text(
+                      "PassWord",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                    subtitle: TextField(
+                      decoration: InputDecoration(
+                        hintText: '********',
+                        hintStyle: TextStyle(color: Colors.grey),
+                        filled: true,
+                        fillColor: Color(
+                          0xFFEFEFEF,
+                        ), // background color inside textfield
+                        contentPadding: EdgeInsets.symmetric(
+                          vertical: 16,
+                          horizontal: 20,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(color: Colors.black12),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(
+                            color: Color(0xFF1A2C54),
+                            width: 2,
+                          ),
+                        ),
+                      ),
+                      style: TextStyle(color: Colors.black), // typing te
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  ListTile(
+                    title: Container(
+                      width: double.infinity,
+
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xFF0A1D34),
+                          foregroundColor: Colors.white,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 10,
+                            vertical: 12,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          textStyle: TextStyle(
+                            fontSize: 26,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/nav_page');
+                        },
+                        child: Text("Login"),
+                      ),
+                    ),
+                  ),
+
+                  ListTile(
+                    title: Align(
+                      alignment: Alignment.center,
+                      child: Text.rich(
+                        TextSpan(
+                          text: "Are you a new user? ",
+                          style: TextStyle(color: Colors.black),
+                          children: [
+                            TextSpan(
+                              text: "Register Now!",
+                              style: TextStyle(
+                                color: Colors.blue,
+                                decoration: TextDecoration.underline,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              recognizer:
+                                  TapGestureRecognizer()
+                                    ..onTap = () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => RegisterPage(),
+                                        ),
+                                      );
+                                    },
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
