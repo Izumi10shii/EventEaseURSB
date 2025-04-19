@@ -10,7 +10,7 @@ INDEX
     ->Login as user
     ->Login as admin
 
-User Pages
+--User Pages
 Home
     ->Click Event>Event_Info>Register for Event>Receipt>Download
 
@@ -20,7 +20,9 @@ Calendar
 Notifs
     ->View Events Registered>Push Notifications
 
-Admin Pages
+----------------------------------------------------
+
+--Admin Pages
     ->Click Event>Event_Info>View Participants>
     ->Add Event BTN->Add new Event
     ->Edit Event(undecided to add)->
@@ -36,4 +38,3 @@ Notifs
     ->Both have the same Profile Page
     ->Small Adjustment change the Edit Button into one (top right)
     ->Links to similar page but with text feilds instead
-    

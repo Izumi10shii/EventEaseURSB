@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class EventInfoPage extends StatelessWidget {
-  EventInfoPage({super.key});
+class AdminEventInfoPage extends StatelessWidget {
+  AdminEventInfoPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class EventInfoPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Event Title",
+                      "Event Admiuun",
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -115,6 +115,11 @@ class EventInfoPage extends StatelessWidget {
                           ),
 
                           SizedBox(height: 20),
+
+
+
+
+                          //
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Color(0xFF0A1D34),
@@ -132,10 +137,15 @@ class EventInfoPage extends StatelessWidget {
                               ),
                             ),
                             onPressed: () {
-                              Navigator.pushNamed(context, '/receipt_page');
+                              Navigator.pushNamed(context, '/participants_page');
                             },
-                            child: Text("Register for Event"),
+                            child: Text("View Participants"),
                           ),
+
+
+
+
+
                         ],
                       ),
                     ),

@@ -49,7 +49,7 @@ class AdminPage extends StatelessWidget {
                       ),
                       onPressed: () {
                         // This is where the navigation happens
-                        Navigator.pushNamed(context, '/nav_page');
+                        Navigator.pushNamed(context, '/admin_nav_page');
                       },
                       child: Text("Login"),
                     ),

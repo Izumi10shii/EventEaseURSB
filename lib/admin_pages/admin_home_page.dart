@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class AdminHomePage extends StatelessWidget {
+  const AdminHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      "EventEase",
+                      "Admin Home",
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
@@ -156,8 +156,12 @@ class HomePage extends StatelessWidget {
               ),
               //TEMP BUTTONS
               ElevatedButton(onPressed: (){
-                Navigator.pushNamed(context, '/event_info_page');
+                Navigator.pushNamed(context, '/admin_event_info_page');
               }, child: Text("event info btn temp.")),
+
+              ElevatedButton(onPressed: (){
+                Navigator.pushNamed(context, '/admin_edit_event_page');
+              }, child: Text("Edit Event Admin Page TEMP.")),
 
               Padding(
                 padding: EdgeInsets.only(left: 20, top: 10),
