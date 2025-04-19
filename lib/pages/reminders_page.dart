@@ -6,157 +6,91 @@ class RemindersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: SafeArea(
         child: ListView(
+          padding: EdgeInsets.all(16),
           children: [
-            ListTile(
-              title: Align(
-                alignment: Alignment.center,
-                child: Text(
-                  "Events Reminder",
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                ),
+            Center(
+              child: Text(
+                "Events Reminder",
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
             ),
-            
-            ListTile(
-              title: Container(
-                height: 120,
-                width: 0,
-                decoration: BoxDecoration(
-                  color: Color(0xFF0A1D34),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(30),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Text("IMG"),
-                      ),
-                      SizedBox(width: 20),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Art to Success: ",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            "Introduction to Gra...",
-                            style: TextStyle(color: Colors.white, fontSize: 18),
-                          ),
-                        ],
-                      ),
-                      SizedBox(width: 10),
+            SizedBox(height: 20),
 
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              Color(0xFF1A2C54), // Button background color
-                          foregroundColor: Colors.white, // Icon color\
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                              10,
-                            ), // Small rounding (or use 0 for a perfect square)
-                          ),
-                          minimumSize: Size(
-                            40,
-                            40,
-                          ), // Make width and height equal = square
-                          padding:
-                              EdgeInsets
-                                  .zero, // Remove extra padding inside button
-                        ),
-                        onPressed: () {},
-                        child: Icon(Icons.notifications),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+            ReminderCard(),
 
-            //Space
-            ListTile(
-              title: Container(
-                height: 120,
-                width: 0,
-                decoration: BoxDecoration(
-                  color: Color(0xFF0A1D34),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(30),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Text("IMG"),
-                      ),
-                      SizedBox(width: 20),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Art to Success: ",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            "Introduction to Gra...",
-                            style: TextStyle(color: Colors.white, fontSize: 18),
-                          ),
-                        ],
-                      ),
-                      SizedBox(width: 10),
+            SizedBox(height: 20),
 
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              Color(0xFF1A2C54), // Button background color
-                          foregroundColor: Colors.white, // Icon color
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                              10,
-                            ), // Small rounding (or use 0 for a perfect square)
-                          ),
-                          minimumSize: Size(
-                            40,
-                            40,
-                          ), // Make width and height equal = square
-                          padding:
-                              EdgeInsets
-                                  .zero, // Remove extra padding inside button
-                        ),
-                        onPressed: () {},
-                        child: Icon(Icons.notifications),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+            ReminderCard(),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class ReminderCard extends StatelessWidget {
+  const ReminderCard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 120,
+      decoration: BoxDecoration(
+        color: Color(0xFF0A1D34),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      child: Row(
+        children: [
+          Container(
+            padding: EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Text("IMG"),
+          ),
+          SizedBox(width: 20),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Art to Success: ",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  "Introduction to Gra...",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(width: 10),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Color(0xFF1A2C54),
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              minimumSize: Size(40, 40),
+              padding: EdgeInsets.zero,
+            ),
+            onPressed: () {},
+            child: Icon(Icons.notifications),
+          ),
+        ],
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -6,6 +7,14 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue,
+
+      /*gradient: LinearGradient(
+              colors: [Colors.blue, Colors.purple], // Define your gradient colors here
+              begin: Alignment.topLeft, // Starting point of gradient
+              end: Alignment.bottomRight, // Ending point of gradient
+            ),*/
+
       body: Center(
         child: ListView(
           children: [
@@ -22,9 +31,27 @@ class ProfilePage extends StatelessWidget {
                         color: Colors.grey,
                       ),
                     ),
-                    ElevatedButton(onPressed: (){
-                      Navigator.pushNamed(context, '/admin_edit_profile_page');
-                    }, child: Icon(Icons.edit))
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(
+                          context,
+                          '/admin_edit_profile_page',
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: Size(10, 10),
+                        backgroundColor: Color(0xFF1A2C54),
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            100,
+                          ), // Rounded corners
+                        ),
+                        elevation: 5,
+                      ),
+
+                      child: Icon(Icons.edit),
+                    ),
                   ],
                 ),
               ),
@@ -41,10 +68,25 @@ class ProfilePage extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 40,
                         fontWeight: FontWeight.bold,
+                        color: Colors.white
                       ),
                     ),
                     SizedBox(width: 20),
-                    ElevatedButton(onPressed: () {}, child: Icon(Icons.copy)),
+                    ElevatedButton(onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                        minimumSize: Size(40, 40),
+                        backgroundColor: Colors.white,
+                        foregroundColor: Colors.black,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            100
+                          ), // Rounded corners
+                        ),
+                        elevation: 0,
+                    ),
+                    
+                    
+                     child: Icon(Icons.copy)),
                   ],
                 ),
               ),
@@ -55,7 +97,6 @@ class ProfilePage extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(40),
-                  border: Border.all(color: Colors.black),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -97,7 +138,6 @@ class ProfilePage extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(40),
-                  border: Border.all(color: Colors.black),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -140,7 +180,6 @@ class ProfilePage extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(40),
-                  border: Border.all(color: Colors.black),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -184,7 +223,6 @@ class ProfilePage extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: Colors.black),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -241,7 +279,6 @@ class ProfilePage extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: Colors.black),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

@@ -4,176 +4,148 @@ import 'package:table_calendar/table_calendar.dart';
 class CalendarPage extends StatelessWidget {
   CalendarPage({super.key});
 
-  DateTime today = DateTime.now();
+  final DateTime today = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Center(
-          child: ListView(
-            children: [
-              ListTile(title: Text("Calendar Page")),
-
-              /*ListTile(title: Container(
-                alignment: Alignment.center,
-                height: 300,
-                width: 300,
-                color: Colors.grey,
-                child: Text("Calendar HERE")),
-                
-              ) , */
-              Container(
-                child: TableCalendar(
-                  rowHeight: 43,
-                  headerStyle: HeaderStyle(formatButtonVisible: false, titleCentered: true),
-                  focusedDay: today, 
-                  firstDay: DateTime.utc(2024, 1, 1), 
-                  lastDay: DateTime.utc(2040, 1, 1),
-                  ),
+        child: ListView(
+          padding: EdgeInsets.all(16),
+          children: [
+            Center(
+              child: Text(
+                "Calendar of Events",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30,
+                ),
               ),
-              
+            ),
+            SizedBox(height: 20),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 8),
+              child: TableCalendar(
+                rowHeight: 43,
+                headerStyle: HeaderStyle(
+                  formatButtonVisible: false,
+                  titleCentered: true,
+                ),
+                focusedDay: today,
+                firstDay: DateTime.utc(2024, 1, 1),
+                lastDay: DateTime.utc(2040, 1, 1),
+              ),
+            ),
+            SizedBox(height: 40),
+            Text(
+              "Upcoming Events",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 26,
+              ),
+            ),
+            SizedBox(height: 20),
+            // Registered Event
+            EventCard(
+              label: "Registered",
+              title: "Intramurals",
+              date: "March 21, 2025",
+              time: "6:00AM - 5:00PM",
+            ),
+            SizedBox(height: 30),
+            // Not Registered Event
+            EventCard(
+              label: "Not Yet Registered",
+              title: "Intramurals",
+              date: "March 21, 2025",
+              time: "6:00AM - 5:00PM",
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
 
-              ListTile(
-                //WIP
-                title: Container(
-                  child: Column(
-                    children: [
-                      Text("Upcoming Events",
+class EventCard extends StatelessWidget {
+  final String label;
+  final String title;
+  final String date;
+  final String time;
+
+  const EventCard({
+    super.key,
+    required this.label,
+    required this.title,
+    required this.date,
+    required this.time,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
+        SizedBox(height: 10),
+        Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: Colors.blue,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          padding: EdgeInsets.all(16),
+          child: Row(
+            children: [
+              Container(
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Text("IMG"),
+
+              ),
+              SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
-                      ),),
-                      SizedBox(height: 40),
-                      Container(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("Registered",
-                      style: TextStyle(
+                        color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
-                      ),),
-                            Container(
-                              padding: EdgeInsets.symmetric(horizontal: 20),
-                              height: 100,
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: Colors.blue,
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Center(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      padding: EdgeInsets.all(20),
-                                      child: Text("IMG"),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                    ),
-                                    SizedBox(width: 20),
-                                    Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text("Intramurals",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                        ),),
-                                        Text("March 21, 2025",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                        ),),
-                                        Text("6:00AM-5:00PM",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                        ),),
-                                      ],
-                                    ),
-                                    SizedBox(width: 20),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
                       ),
-
-                      SizedBox(height: 40),
-                      Container(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("Not Yet Registered",
+                    ),
+                    Text(
+                      date,
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ),),
-                            Container(
-                                  padding: EdgeInsets.symmetric(horizontal: 20),
-                              height: 100,
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: Colors.blue,
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Center(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      padding: EdgeInsets.all(20),
-                                      child: Text("IMG"),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                    ),
-                                    SizedBox(width: 20),
-                                    Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-
-                                        Text("Intramurals",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                        ),),
-                                        Text("March 21, 2025",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                        ),),
-                                        Text("6:00AM-5:00PM",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                        ),),
-                                      ],
-                                    ),
-                                    SizedBox(width: 20),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                        color: Colors.white,
+                        fontSize: 18,
                       ),
-                    ],
-                  ),
+                    ),
+                    Text(
+                      time,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
           ),
         ),
-      ),
+      ],
     );
   }
 }
