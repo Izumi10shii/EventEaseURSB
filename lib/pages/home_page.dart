@@ -225,7 +225,6 @@ class HomePage extends StatelessWidget {
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 18,
-                                        
                                       ),
                                     ),
                                     Text(
@@ -248,14 +247,16 @@ class HomePage extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              
+
                               Spacer(),
                               Padding(
                                 padding: EdgeInsets.only(left: 20, bottom: 10),
                                 child: Text(
                                   "Intramurals",
-                                  style: TextStyle(fontWeight: FontWeight.bold,
-                                  fontSize: 20),
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                  ),
                                 ),
                               ),
                             ],
@@ -299,7 +300,6 @@ class HomePage extends StatelessWidget {
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 18,
-                                        
                                       ),
                                     ),
                                     Text(
@@ -322,14 +322,16 @@ class HomePage extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              
+
                               Spacer(),
                               Padding(
                                 padding: EdgeInsets.only(left: 20, bottom: 10),
                                 child: Text(
                                   "Sports Festival",
-                                  style: TextStyle(fontWeight: FontWeight.bold,
-                                  fontSize: 20),
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                  ),
                                 ),
                               ),
                             ],
@@ -373,7 +375,6 @@ class HomePage extends StatelessWidget {
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 18,
-                                        
                                       ),
                                     ),
                                     Text(
@@ -396,14 +397,16 @@ class HomePage extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              
+
                               Spacer(),
                               Padding(
                                 padding: EdgeInsets.only(left: 20, bottom: 10),
                                 child: Text(
                                   "Holy Week",
-                                  style: TextStyle(fontWeight: FontWeight.bold,
-                                  fontSize: 20),
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                  ),
                                 ),
                               ),
                             ],
@@ -423,7 +426,7 @@ class HomePage extends StatelessWidget {
                       "Upcoming Events",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                        fontSize: 24,
                       ),
                     ),
                   ),
@@ -441,7 +444,7 @@ class HomePage extends StatelessWidget {
                             "Mar",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 20,
+                              fontSize: 24,
                             ),
                           ),
                           Container(width: 2, height: 320, color: Colors.black),
@@ -456,10 +459,10 @@ class HomePage extends StatelessWidget {
                             // First event card
                             Container(
                               width: double.infinity,
-                              height: 150,
+                              height: 180,
                               decoration: BoxDecoration(
-                                color: Colors.grey,
-                                borderRadius: BorderRadius.circular(10),
+                                color: Color(0xFFD9D9D9),
+                                borderRadius: BorderRadius.circular(18),
                               ),
                               child: Row(
                                 children: [
@@ -480,17 +483,20 @@ class HomePage extends StatelessWidget {
                             SizedBox(height: 5),
                             Text(
                               "Holy Week",
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
                             ),
                             SizedBox(height: 20),
 
                             // Second event card
                             Container(
                               width: double.infinity,
-                              height: 150,
+                              height: 180,
                               decoration: BoxDecoration(
-                                color: Colors.grey,
-                                borderRadius: BorderRadius.circular(10),
+                                color: Color(0xFFD9D9D9),
+                                borderRadius: BorderRadius.circular(18),
                               ),
                               child: Row(
                                 children: [
@@ -511,7 +517,10 @@ class HomePage extends StatelessWidget {
                             SizedBox(height: 5),
                             Text(
                               "Labor Day",
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
                             ),
                           ],
                         ),
@@ -532,7 +541,7 @@ class HomePage extends StatelessWidget {
                             "Apr",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 20,
+                              fontSize: 24,
                             ),
                           ),
                           Container(width: 2, height: 320, color: Colors.black),
@@ -547,10 +556,10 @@ class HomePage extends StatelessWidget {
                             // First event card
                             Container(
                               width: double.infinity,
-                              height: 150,
+                              height: 180,
                               decoration: BoxDecoration(
-                                color: Colors.grey,
-                                borderRadius: BorderRadius.circular(10),
+                                color: Color(0xFFD9D9D9),
+                                borderRadius: BorderRadius.circular(18),
                               ),
                               child: Row(
                                 children: [
@@ -571,17 +580,20 @@ class HomePage extends StatelessWidget {
                             SizedBox(height: 5),
                             Text(
                               "April Fool's Day",
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
                             ),
                             SizedBox(height: 20),
 
                             // Second event card
                             Container(
                               width: double.infinity,
-                              height: 150,
+                              height: 180,
                               decoration: BoxDecoration(
-                                color: Colors.grey,
-                                borderRadius: BorderRadius.circular(10),
+                                color: Color(0xFFD9D9D9),
+                                borderRadius: BorderRadius.circular(18),
                               ),
                               child: Row(
                                 children: [
@@ -602,7 +614,10 @@ class HomePage extends StatelessWidget {
                             SizedBox(height: 5),
                             Text(
                               "Graduation",
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
                             ),
                           ],
                         ),

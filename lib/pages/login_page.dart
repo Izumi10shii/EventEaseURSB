@@ -47,7 +47,7 @@ class LoginPage extends StatelessWidget {
                           0xFFEFEFEF,
                         ), // background color inside textfield
                         contentPadding: EdgeInsets.symmetric(
-                          vertical: 16,
+                          vertical: 14,
                           horizontal: 20,
                         ),
                         enabledBorder: OutlineInputBorder(
@@ -83,7 +83,7 @@ class LoginPage extends StatelessWidget {
                           0xFFEFEFEF,
                         ), // background color inside textfield
                         contentPadding: EdgeInsets.symmetric(
-                          vertical: 16,
+                          vertical: 14,
                           horizontal: 20,
                         ),
                         enabledBorder: OutlineInputBorder(
