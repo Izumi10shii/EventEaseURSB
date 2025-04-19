@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 class CalendarPage extends StatelessWidget {
   CalendarPage({super.key});
+
+  DateTime today = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -12,13 +15,23 @@ class CalendarPage extends StatelessWidget {
             children: [
               ListTile(title: Text("Calendar Page")),
 
-              ListTile(title: Container(
+              /*ListTile(title: Container(
                 alignment: Alignment.center,
                 height: 300,
                 width: 300,
                 color: Colors.grey,
                 child: Text("Calendar HERE")),
-              ) ,
+                
+              ) , */
+              Container(
+                child: TableCalendar(
+                  rowHeight: 43,
+                  headerStyle: HeaderStyle(formatButtonVisible: false, titleCentered: true),
+                  focusedDay: today, 
+                  firstDay: DateTime.utc(2024, 1, 1), 
+                  lastDay: DateTime.utc(2040, 1, 1),
+                  ),
+              ),
               
 
               ListTile(
