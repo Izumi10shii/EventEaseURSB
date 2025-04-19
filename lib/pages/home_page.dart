@@ -73,66 +73,60 @@ class HomePage extends StatelessWidget {
                   padding: EdgeInsets.symmetric(vertical: 10),
                   child: Center(
                     child: Row(
+
+                      
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          width: 80,
-                          height: 30,
-                          decoration: BoxDecoration(
-                            color: Colors.purple,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "COA",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
 
-                        SizedBox(width: 10),
-                        Container(
-                          width: 80,
-                          height: 30,
-                          decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "COB",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 19,
-                                color: Colors.white,
-                              ),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.purple,
+                            foregroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            textStyle: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/COA_events_page');
+                          },
+                          child: Text("COA"),
                         ),
+                        SizedBox(width: 10,),
+                        ElevatedButton(style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red,
+                            foregroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            textStyle: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),onPressed: () {
+                            Navigator.pushNamed(context, '/COB_events_page');
+                          }, child: Text("COB")),
+                        SizedBox(width: 10,),
 
-                        SizedBox(width: 10),
-                        Container(
-                          width: 80,
-                          height: 30,
-                          decoration: BoxDecoration(
-                            color: Colors.blue,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "CCS",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                                color: Colors.white,
-                              ),
+                        ElevatedButton(style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blue,
+                            foregroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
                             ),
-                          ),
-                        ),
+                            textStyle: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),onPressed: () {
+                            Navigator.pushNamed(context, '/CCS_events_page');
+                          }, child: Text("CCS")),
+
+                       
+
                       ],
                     ),
                   ),
@@ -154,20 +148,23 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
-              //TEMP BUTTONS
-              ElevatedButton(onPressed: (){
-                Navigator.pushNamed(context, '/admin_event_info_page');
-              }, child: Text("event info btn temp.")),
 
               Padding(
                 padding: EdgeInsets.only(left: 20, top: 10),
                 child: SingleChildScrollView(
-                  scrollDirection:
-                      Axis.horizontal,
+                  scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
+                      GestureDetector(
+                        onTap: () {
+                          //Click on First Event Card
+                          Navigator.pushNamed(
+                            context,
+                            '/event_info_page',
+                          );
+                        },
                       // First Event Card
-                      Container(
+                      child: Container(
                         width: 300,
                         height: 200,
                         margin: EdgeInsets.only(
@@ -228,7 +225,7 @@ class HomePage extends StatelessWidget {
                               ),
                             ),
                           ],
-                        ),
+                      )),
                       ),
                       // Second Event Card
                       Container(

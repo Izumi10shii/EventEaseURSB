@@ -6,6 +6,9 @@ import 'package:flutter_event_ease/pages/receipt_page.dart';
 import 'package:flutter_event_ease/pages/register_page.dart';
 import 'package:flutter_event_ease/pages/login_page.dart';
 import 'package:flutter_event_ease/pages/nav_page.dart';
+import 'package:flutter_event_ease/pages/CCS_events_page.dart';
+import 'package:flutter_event_ease/pages/COA_events_page.dart';
+import 'package:flutter_event_ease/pages/COB_events_page.dart';
 
 //Admin Pages
 import 'package:flutter_event_ease/admin_pages/admin_nav_page.dart';
@@ -39,6 +42,7 @@ class MyApp extends StatelessWidget {
         '/home_page': (context) => HomePage(),
         '/event_info_page': (context) => EventInfoPage(), 
         '/receipt_page': (context) => ReceiptPage(),
+        '/edit_profile_page': (context) => ReceiptPage(),
 
 
         //Admin Pages
@@ -51,7 +55,9 @@ class MyApp extends StatelessWidget {
         '/event_manager_page': (context) => EventManagerPage(),
         '/admin_profile_page': (context) => AdminProfilePage(),
         '/admin_edit_profile_page': (context) => AdminEditProfilePage(),
-
+        '/COA_events_page' :(context) => COAEventsPage(),
+        '/COB_events_page' :(context) => COBEventsPage(),
+        '/CCS_events_page' :(context) => CCSEventsPage(),
       },
       home: IndexPage(),
     );

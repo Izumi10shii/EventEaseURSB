@@ -75,64 +75,53 @@ class AdminHomePage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          width: 80,
-                          height: 30,
-                          decoration: BoxDecoration(
-                            color: Colors.purple,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "COA",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                                color: Colors.white,
-                              ),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.purple,
+                            foregroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            textStyle: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/COA_events_page');
+                          },
+                          child: Text("COA"),
                         ),
+                        SizedBox(width: 10,),
+                        ElevatedButton(style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red,
+                            foregroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            textStyle: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),onPressed: () {
+                            Navigator.pushNamed(context, '/COB_events_page');
+                          }, child: Text("COB")),
+                        SizedBox(width: 10,),
 
-                        SizedBox(width: 10),
-                        Container(
-                          width: 80,
-                          height: 30,
-                          decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "COB",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 19,
-                                color: Colors.white,
-                              ),
+                        ElevatedButton(style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blue,
+                            foregroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
                             ),
-                          ),
-                        ),
+                            textStyle: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),onPressed: () {
+                            Navigator.pushNamed(context, '/CCS_events_page');
+                          }, child: Text("CCS")),
 
-                        SizedBox(width: 10),
-                        Container(
-                          width: 80,
-                          height: 30,
-                          decoration: BoxDecoration(
-                            color: Colors.blue,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "CCS",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
                       ],
                     ),
                   ),
@@ -154,84 +143,86 @@ class AdminHomePage extends StatelessWidget {
                   ),
                 ),
               ),
-              
+
               Padding(
                 padding: EdgeInsets.only(left: 20, top: 10),
                 child: SingleChildScrollView(
-                  scrollDirection:
-                      Axis.horizontal,
+                  scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
                       // First Event Card
                       GestureDetector(
-                        onTap: (){
+                        onTap: () {
                           //Click on First Event Card
-                          Navigator.pushNamed(context, '/admin_event_info_page');
+                          Navigator.pushNamed(
+                            context,
+                            '/admin_event_info_page',
+                          );
                         },
-                      child: Container(
-                        width: 300,
-                        height: 200,
-                        margin: EdgeInsets.only(
-                          right: 10,
-                        ), // Space between cards
-                        decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            // Date Box
-                            Container(
-                              width: 60,
-                              height: 50,
-                              margin: EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Mar",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                  Text(
-                                    "21",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Spacer(),
-                            Center(
-                              child: Text(
-                                "IMG",
-                                style: TextStyle(
-                                  fontSize: 40,
+                        child: Container(
+                          width: 300,
+                          height: 200,
+                          margin: EdgeInsets.only(
+                            right: 10,
+                          ), // Space between cards
+                          decoration: BoxDecoration(
+                            color: Colors.grey,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // Date Box
+                              Container(
+                                width: 60,
+                                height: 50,
+                                margin: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
                                   color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "Mar",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                    Text(
+                                      "21",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                            ),
-                            Spacer(),
-                            Padding(
-                              padding: EdgeInsets.only(left: 10, bottom: 10),
-                              child: Text(
-                                "Intramurals",
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                              Spacer(),
+                              Center(
+                                child: Text(
+                                  "IMG",
+                                  style: TextStyle(
+                                    fontSize: 40,
+                                    color: Colors.white,
+                                  ),
+                                ),
                               ),
-                            ),
-                          ],
+                              Spacer(),
+                              Padding(
+                                padding: EdgeInsets.only(left: 10, bottom: 10),
+                                child: Text(
+                                  "Intramurals",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                  ),
                       // Second Event Card
                       Container(
                         width: 300,

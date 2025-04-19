@@ -37,7 +37,7 @@ class AdminProfilePage extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      "@Usfjsdljf",
+                      "@username",
                       style: TextStyle(
                         fontSize: 40,
                         fontWeight: FontWeight.bold,
