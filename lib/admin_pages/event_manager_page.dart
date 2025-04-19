@@ -46,7 +46,9 @@ class EventManagerPage extends StatelessWidget {
                         ),
                         SizedBox(width: 20),
 
-                        ElevatedButton(onPressed: () {}, child: Icon(Icons.edit)),
+                        ElevatedButton(onPressed: () {
+                          Navigator.pushNamed(context,'/admin_edit_event_page');
+                        }, child: Icon(Icons.edit)),
                       ],
                     ),
                   ),
@@ -85,7 +87,9 @@ class EventManagerPage extends StatelessWidget {
                         ),
                         SizedBox(width: 20),
 
-                        ElevatedButton(onPressed: () {}, child: Icon(Icons.edit)),
+                        ElevatedButton(onPressed: () {
+                          Navigator.pushNamed(context,'/admin_edit_event_page');
+                        }, child: Icon(Icons.edit)),
                       ],
                     ),
                   ),

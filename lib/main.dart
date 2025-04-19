@@ -15,6 +15,8 @@ import 'package:flutter_event_ease/admin_pages/admin_edit_event_page.dart';
 import 'package:flutter_event_ease/admin_pages/participants_page.dart';
 import 'package:flutter_event_ease/admin_pages/admin_event_info_page.dart';
 import 'package:flutter_event_ease/admin_pages/event_manager_page.dart';
+import 'package:flutter_event_ease/admin_pages/admin_profile_page.dart';
+import 'package:flutter_event_ease/admin_pages/admin_edit_profile_page.dart';
 
 
 void main() {
@@ -47,6 +49,8 @@ class MyApp extends StatelessWidget {
         '/admin_home_page':(context) => AdminHomePage(),
         '/admin_event_info_page': (context) => AdminEventInfoPage(),
         '/event_manager_page': (context) => EventManagerPage(),
+        '/admin_profile_page': (context) => AdminProfilePage(),
+        '/admin_edit_profile_page': (context) => AdminEditProfilePage(),
 
       },
       home: IndexPage(),

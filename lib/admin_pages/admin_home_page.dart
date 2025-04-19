@@ -154,15 +154,7 @@ class AdminHomePage extends StatelessWidget {
                   ),
                 ),
               ),
-              //TEMP BUTTONS
-              ElevatedButton(onPressed: (){
-                Navigator.pushNamed(context, '/admin_event_info_page');
-              }, child: Text("event info btn temp.")),
-
-              ElevatedButton(onPressed: (){
-                Navigator.pushNamed(context, '/admin_edit_event_page');
-              }, child: Text("Edit Event Admin Page TEMP.")),
-
+              
               Padding(
                 padding: EdgeInsets.only(left: 20, top: 10),
                 child: SingleChildScrollView(
@@ -171,7 +163,12 @@ class AdminHomePage extends StatelessWidget {
                   child: Row(
                     children: [
                       // First Event Card
-                      Container(
+                      GestureDetector(
+                        onTap: (){
+                          //Click on First Event Card
+                          Navigator.pushNamed(context, '/admin_event_info_page');
+                        },
+                      child: Container(
                         width: 300,
                         height: 200,
                         margin: EdgeInsets.only(
@@ -234,6 +231,7 @@ class AdminHomePage extends StatelessWidget {
                           ],
                         ),
                       ),
+                  ),
                       // Second Event Card
                       Container(
                         width: 300,

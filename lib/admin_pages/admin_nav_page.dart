@@ -4,6 +4,7 @@ import 'package:flutter_event_ease/pages/profile_page.dart';
 
 import 'package:flutter_event_ease/admin_pages/event_manager_page.dart';
 import 'package:flutter_event_ease/admin_pages/admin_home_page.dart';
+import 'package:flutter_event_ease/admin_pages/admin_profile_page.dart';
 
 class AdminNavPage extends StatefulWidget{
   const AdminNavPage({super.key});
@@ -30,7 +31,7 @@ class _NavPageState extends State<AdminNavPage> {
 
     EventManagerPage(),
 
-    ProfilePage(),
+    AdminProfilePage(),
 
   ];
 

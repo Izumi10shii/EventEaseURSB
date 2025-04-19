@@ -156,7 +156,7 @@ class HomePage extends StatelessWidget {
               ),
               //TEMP BUTTONS
               ElevatedButton(onPressed: (){
-                Navigator.pushNamed(context, '/event_info_page');
+                Navigator.pushNamed(context, '/admin_event_info_page');
               }, child: Text("event info btn temp.")),
 
               Padding(
