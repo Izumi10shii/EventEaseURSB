@@ -1,8 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+  final String documentId;
+  const ProfilePage({Key? key, required this.documentId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,310 +17,330 @@ class ProfilePage extends StatelessWidget {
               end: Alignment.bottomRight, // Ending point of gradient
             ),*/
 
-      body: Center(
-        child: ListView(
-          children: [
-            ListTile(
-              title: Align(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      height: 300,
-                      width: 300,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(999),
-                        color: Colors.grey,
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(
-                          context,
-                          '/admin_edit_profile_page',
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: Size(10, 10),
-                        backgroundColor: Color(0xFF1A2C54),
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                            100,
-                          ), // Rounded corners
-                        ),
-                        elevation: 5,
-                      ),
+            //WIP
+      body: FutureBuilder<DocumentSnapshot>(
+        future:
+            FirebaseFirestore.instance
+                .collection('users')
+                .doc(documentId)
+                .get(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          }
+          if (snapshot.hasError) {
+            return Center(child: Text('Error: ${snapshot.error}'));
+          }
+          if (!snapshot.hasData || !snapshot.data!.exists) {
+            return Center(child: Text('Document does not exist'));
+          }
+          var userData = snapshot.data!.data() as Map<String, dynamic>;
 
-                      child: Icon(Icons.edit),
-                    ),
-                  ],
+          return ListView(
+            children: [
+              ListTile(
+                title: Align(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 300,
+                        width: 300,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(999),
+                          color: Colors.grey,
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                            context,
+                            '/admin_edit_profile_page',
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size(10, 10),
+                          backgroundColor: Color(0xFF1A2C54),
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                              100,
+                            ), // Rounded corners
+                          ),
+                          elevation: 5,
+                        ),
+
+                        child: Icon(Icons.edit),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
 
-            ListTile(
-              title: Align(
-                alignment: Alignment.center,
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      "@username",
-                      style: TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white
-                      ),
-                    ),
-                    SizedBox(width: 20),
-                    ElevatedButton(onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                        minimumSize: Size(40, 40),
-                        backgroundColor: Colors.white,
-                        foregroundColor: Colors.black,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                            100
-                          ), // Rounded corners
-                        ),
-                        elevation: 0,
-                    ),
-                    
-                    
-                     child: Icon(Icons.copy)),
-                  ],
-                ),
-              ),
-            ),
-
-            ListTile(
-              title: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(40),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 10,
-                        horizontal: 20,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Color(0xFF1A2C54),
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(0),
-                          bottomLeft: Radius.circular(20),
-                          bottomRight: Radius.circular(40),
-                        ),
-                      ),
-                      child: Text(
-                        "Full Name",
+              ListTile(
+                title: Align(
+                  alignment: Alignment.center,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        "@username",
                         style: TextStyle(
+                          fontSize: 40,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
                       ),
-                    ),
-                    SizedBox(width: 40),
-                    Text("Di O. Nela"),
-                    SizedBox(width: 40),
-                  ],
+                      SizedBox(width: 20),
+                      ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size(40, 40),
+                          backgroundColor: Colors.white,
+                          foregroundColor: Colors.black,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                              100,
+                            ), // Rounded corners
+                          ),
+                          elevation: 0,
+                        ),
+
+                        child: Icon(Icons.copy),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
 
-            ListTile(
-              title: Container(
-                padding: EdgeInsets.all(0),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(40),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 10,
-                        horizontal: 20,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Color(0xFF1A2C54),
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(0),
-                          bottomLeft: Radius.circular(20),
-                          bottomRight: Radius.circular(40),
+              ListTile(
+                title: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(40),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 10,
+                          horizontal: 20,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Color(0xFF1A2C54),
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(0),
+                            bottomLeft: Radius.circular(20),
+                            bottomRight: Radius.circular(40),
+                          ),
+                        ),
+                        child: Text(
+                          "Full Name",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
-
-                      child: Text(
-                        "Program",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 40),
-                    Text("BSIT"),
-                    SizedBox(width: 40),
-                  ],
+                      SizedBox(width: 40),
+                      Text("Di O. Nela"),
+                      SizedBox(width: 40),
+                    ],
+                  ),
                 ),
               ),
-            ),
 
-            ListTile(
-              title: Container(
-                padding: EdgeInsets.all(0),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(40),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 10,
-                        horizontal: 20,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Color(0xFF1A2C54),
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(0),
-                          bottomLeft: Radius.circular(20),
-                          bottomRight: Radius.circular(40),
+              ListTile(
+                title: Container(
+                  padding: EdgeInsets.all(0),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(40),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 10,
+                          horizontal: 20,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Color(0xFF1A2C54),
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(0),
+                            bottomLeft: Radius.circular(20),
+                            bottomRight: Radius.circular(40),
+                          ),
+                        ),
+
+                        child: Text(
+                          "Program",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
-
-                      child: Text(
-                        "Section",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 40),
-                    Text("2-1A"),
-                    SizedBox(width: 40),
-                  ],
+                      SizedBox(width: 40),
+                      Text("BSIT"),
+                      SizedBox(width: 40),
+                    ],
+                  ),
                 ),
               ),
-            ),
 
-            //Interest
-            ListTile(
-              title: Container(
-                padding: EdgeInsets.all(0),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 10,
-                            horizontal: 40,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Color(0xFF1A2C54),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(20),
-                              topRight: Radius.circular(0),
-                              bottomLeft: Radius.circular(0),
-                              bottomRight: Radius.circular(60),
-                            ),
-                          ),
-                          child: Text(
-                            "Interest",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
+              ListTile(
+                title: Container(
+                  padding: EdgeInsets.all(0),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(40),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 10,
+                          horizontal: 20,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Color(0xFF1A2C54),
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(0),
+                            bottomLeft: Radius.circular(20),
+                            bottomRight: Radius.circular(40),
                           ),
                         ),
-                        SizedBox(width: 160),
-                      ],
-                    ),
-                    SizedBox(width: 40),
-                    //put in container
-                    Padding(
-                      padding: EdgeInsets.all(20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+
+                        child: Text(
+                          "Section",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 40),
+                      Text("2-1A"),
+                      SizedBox(width: 40),
+                    ],
+                  ),
+                ),
+              ),
+
+              //Interest
+              ListTile(
+                title: Container(
+                  padding: EdgeInsets.all(0),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+
+                    children: [
+                      Row(
                         children: [
-                          Text("Ethanol"),
-                          Text("Ikimandians"),
-                          Text("Marilag"),
-                          SizedBox(width: 40),
+                          Container(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 10,
+                              horizontal: 40,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Color(0xFF1A2C54),
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20),
+                                topRight: Radius.circular(0),
+                                bottomLeft: Radius.circular(0),
+                                bottomRight: Radius.circular(60),
+                              ),
+                            ),
+                            child: Text(
+                              "Interest",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 160),
                         ],
                       ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            ListTile(
-              title: Container(
-                padding: EdgeInsets.all(0),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 10,
-                        horizontal: 40,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Color(0xFF1A2C54),
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(0),
-                          bottomLeft: Radius.circular(00),
-                          bottomRight: Radius.circular(60),
+                      SizedBox(width: 40),
+                      //put in container
+                      Padding(
+                        padding: EdgeInsets.all(20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Ethanol"),
+                            Text("Ikimandians"),
+                            Text("Marilag"),
+                            SizedBox(width: 40),
+                          ],
                         ),
                       ),
-                      child: Text(
-                        "Recent Activities",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 40),
-                    Padding(
-                      padding: EdgeInsets.all(20),
-                      child: Text(
-                        "03/25/2025 | Attended URS Binangonan College Week: March...",
-                      ),
-                    ),
-                    SizedBox(width: 40),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
-        ),
+              ListTile(
+                title: Container(
+                  padding: EdgeInsets.all(0),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 10,
+                          horizontal: 40,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Color(0xFF1A2C54),
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(0),
+                            bottomLeft: Radius.circular(00),
+                            bottomRight: Radius.circular(60),
+                          ),
+                        ),
+                        child: Text(
+                          "Recent Activities",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 40),
+                      Padding(
+                        padding: EdgeInsets.all(20),
+                        child: Text(
+                          "03/25/2025 | Attended URS Binangonan College Week: March...",
+                        ),
+                      ),
+                      SizedBox(width: 40),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }
