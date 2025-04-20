@@ -21,10 +21,11 @@ import 'package:flutter_event_ease/admin_pages/event_manager_page.dart';
 import 'package:flutter_event_ease/admin_pages/admin_profile_page.dart';
 import 'package:flutter_event_ease/admin_pages/admin_edit_profile_page.dart';
 
-//Firebase
+//FIREBASE START
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-import 'package:cloud_firestore/cloud_firestore.dart'; // Make sure you import this!
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart'; 
 
 late FirebaseFirestore db; 
 
@@ -37,18 +38,29 @@ await Firebase.initializeApp(
   db = FirebaseFirestore.instance;
 
   final user = <String, dynamic>{
-    "first": "Ada",
-    "last": "Lovelace",
+    "first": "John",
+    "last": "Doe",
     "born": 1815
   };
 
   db.collection("users").add(user).then((DocumentReference doc) => 
   print('DocumentSnapshot added with ID: ${doc.id}'));
 
-
 runApp(const MyApp());
+} 
 
-}
+//FIREBASE END
+
+
+
+
+
+
+
+
+
+
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
