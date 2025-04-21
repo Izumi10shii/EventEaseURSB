@@ -13,66 +13,293 @@ class RegisterPage extends StatelessWidget {
             padding: EdgeInsets.all(25),
             child: ListView(
               children: [
-                ListTile(title: Text("Event Ease")),
+
+                ListTile(title: 
+                Center(child: 
+                Text("Event Ease",
+                style: TextStyle(
+                  fontSize: 50,
+                  fontWeight: FontWeight.bold,
+                ),)
+                )
+                ),
 
                 ListTile(
-                  title: Text("Student ID"),
-                  subtitle: TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      //hintText: "Student ID ",
+title: Text(
+                      "Student ID",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
                     ),
-                  ),
+                    subtitle: TextField(
+                      decoration: InputDecoration(
+                        hintText: "",
+                        hintStyle: TextStyle(color: Colors.grey),
+                        filled: true,
+                        fillColor: Color(
+                          0xFFFCFCFC,
+                        ), // background color inside textfield
+                        contentPadding: EdgeInsets.symmetric(
+                          vertical: 14,
+                          horizontal: 20,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(color: Colors.black12),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(
+                            color: Color(0xFF1A2C54),
+                            width: 2,
+                          ),
+                        ),
+                      ),
+                      style: TextStyle(color: Colors.black), // typing te
+                    ),
+
+                 
+                  
                 ),
 
                 ListTile(
-                  title: Text("Username"),
-                  subtitle: TextField(
-                    decoration: InputDecoration(border: OutlineInputBorder()),
-                  ),
+title: Text(
+                      "Username",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                    subtitle: TextField(
+                      decoration: InputDecoration(
+                        hintText: "",
+                        hintStyle: TextStyle(color: Colors.grey),
+                        filled: true,
+                        fillColor: Color(
+                          0xFFFCFCFC,
+                        ), // background color inside textfield
+                        contentPadding: EdgeInsets.symmetric(
+                          vertical: 14,
+                          horizontal: 20,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(color: Colors.black12),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(
+                            color: Color(0xFF1A2C54),
+                            width: 2,
+                          ),
+                        ),
+                      ),
+                      style: TextStyle(color: Colors.black), // typing te
+                    ),
+
                 ),
 
                 ListTile(
-                  title: Text("Full Name"),
-                  subtitle: TextField(
-                    decoration: InputDecoration(border: OutlineInputBorder()),
-                  ),
+title: Text(
+                      "Full Name",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                    subtitle: TextField(
+                      decoration: InputDecoration(
+                        hintText: "",
+                        hintStyle: TextStyle(color: Colors.grey),
+                        filled: true,
+                        fillColor: Color(
+                          0xFFFCFCFC,
+                        ), // background color inside textfield
+                        contentPadding: EdgeInsets.symmetric(
+                          vertical: 14,
+                          horizontal: 20,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(color: Colors.black12),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(
+                            color: Color(0xFF1A2C54),
+                            width: 2,
+                          ),
+                        ),
+                      ),
+                      style: TextStyle(color: Colors.black), // typing te
+                    ),
+
+            
                 ),
 
                 ListTile(
-                  title: Text("Password"),
-                  subtitle: TextField(
-                    decoration: InputDecoration(border: OutlineInputBorder()),
-                  ),
+title: Text(
+                      "Password",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                    subtitle: TextField(
+                      decoration: InputDecoration(
+                        hintText: "",
+                        hintStyle: TextStyle(color: Colors.grey),
+                        filled: true,
+                        fillColor: Color(
+                          0xFFFCFCFC,
+                        ), // background color inside textfield
+                        contentPadding: EdgeInsets.symmetric(
+                          vertical: 14,
+                          horizontal: 20,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(color: Colors.black12),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(
+                            color: Color(0xFF1A2C54),
+                            width: 2,
+                          ),
+                        ),
+                      ),
+                      style: TextStyle(color: Colors.black), // typing te
+                    ),
+
+                
                 ),
 
                 ListTile(
-                  title: Text("Confirm Password"),
-                  subtitle: TextField(
-                    decoration: InputDecoration(border: OutlineInputBorder()),
-                  ),
+title: Text(
+                      "Confirm Password",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                    subtitle: TextField(
+                      decoration: InputDecoration(
+                        hintText: "",
+                        hintStyle: TextStyle(color: Colors.grey),
+                        filled: true,
+                        fillColor: Color(
+                          0xFFFCFCFC,
+                        ), // background color inside textfield
+                        contentPadding: EdgeInsets.symmetric(
+                          vertical: 14,
+                          horizontal: 20,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(color: Colors.black12),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(
+                            color: Color(0xFF1A2C54),
+                            width: 2,
+                          ),
+                        ),
+                      ),
+                      style: TextStyle(color: Colors.black), // typing te
+                    ),
+
                 ),
 
                 ListTile(
-                  title: Text("Program"),
-                  subtitle: TextField(
-                    decoration: InputDecoration(border: OutlineInputBorder()),
-                  ),
+
+
+
+                 
+
+                   title: Text(
+                      "Program",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                    subtitle: TextField(
+                      decoration: InputDecoration(
+                        hintText: "",
+                        hintStyle: TextStyle(color: Colors.grey),
+                        filled: true,
+                        fillColor: Color(
+                          0xFFFCFCFC,
+                        ), // background color inside textfield
+                        contentPadding: EdgeInsets.symmetric(
+                          vertical: 14,
+                          horizontal: 20,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(color: Colors.black12),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(
+                            color: Color(0xFF1A2C54),
+                            width: 2,
+                          ),
+                        ),
+                      ),
+                      style: TextStyle(color: Colors.black), // typing te
+                    ),
                 ),
 
                 ListTile(
-                  title: Text("Year & Section"),
-                  subtitle: TextField(
-                    decoration: InputDecoration(border: OutlineInputBorder()),
-                  ),
+title: Text(
+                      "Year & Section",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                    subtitle: TextField(
+                      decoration: InputDecoration(
+                        hintText: "",
+                        hintStyle: TextStyle(color: Colors.grey),
+                        filled: true,
+                        fillColor: Color(
+                          0xFFFCFCFC,
+                        ), // background color inside textfield
+                        contentPadding: EdgeInsets.symmetric(
+                          vertical: 14,
+                          horizontal: 20,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(color: Colors.black12),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                          borderSide: BorderSide(
+                            color: Color(0xFF1A2C54),
+                            width: 2,
+                          ),
+                        ),
+                      ),
+                      style: TextStyle(color: Colors.black), // typing te
+                    ),
+
+                  
                 ),
 
-                ElevatedButton(
+ListTile(
+
+                title: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xFF0A1D34),
                     foregroundColor: Colors.white,
                     padding: EdgeInsets.symmetric(
-                      horizontal: 100,
+                      horizontal: 0,
                       vertical: 10,
                     ),
                     shape: RoundedRectangleBorder(
@@ -88,6 +315,7 @@ class RegisterPage extends StatelessWidget {
                   },
                   child: Text("Register"),
                 ),
+),
                 ListTile(
                 title: Padding(
                   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),

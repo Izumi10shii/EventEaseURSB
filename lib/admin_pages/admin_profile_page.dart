@@ -1,17 +1,26 @@
+import 'dart:ui';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class AdminProfilePage extends StatelessWidget {
-  const AdminProfilePage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue,
+
+      /*gradient: LinearGradient(
+              colors: [Colors.blue, Colors.purple], // Define your gradient colors here
+              begin: Alignment.topLeft, // Starting point of gradient
+              end: Alignment.bottomRight, // Ending point of gradient
+            ),*/
       body: Center(
         child: ListView(
           children: [
             ListTile(
               title: Align(
+                alignment: Alignment.center,
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
@@ -22,9 +31,6 @@ class AdminProfilePage extends StatelessWidget {
                         color: Colors.grey,
                       ),
                     ),
-                    ElevatedButton(onPressed: (){
-                      Navigator.pushNamed(context, '/admin_edit_profile_page');
-                    }, child: Icon(Icons.edit))
                   ],
                 ),
               ),
@@ -41,10 +47,26 @@ class AdminProfilePage extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 40,
                         fontWeight: FontWeight.bold,
+                        color: Colors.white,
                       ),
                     ),
                     SizedBox(width: 20),
-                    ElevatedButton(onPressed: () {}, child: Icon(Icons.copy)),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: Size(40, 40),
+                        backgroundColor: Colors.white,
+                        foregroundColor: Colors.black,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            20,
+                          ), // Rounded corners
+                        ),
+                        elevation: 0,
+                      ),
+
+                      child: Icon(Icons.copy),
+                    ),
                   ],
                 ),
               ),
@@ -55,7 +77,6 @@ class AdminProfilePage extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(40),
-                  border: Border.all(color: Colors.black),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -97,7 +118,6 @@ class AdminProfilePage extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(40),
-                  border: Border.all(color: Colors.black),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -140,7 +160,6 @@ class AdminProfilePage extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(40),
-                  border: Border.all(color: Colors.black),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -183,8 +202,7 @@ class AdminProfilePage extends StatelessWidget {
                 padding: EdgeInsets.all(0),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: Colors.black),
+                  borderRadius: BorderRadius.circular(22),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -200,7 +218,7 @@ class AdminProfilePage extends StatelessWidget {
                           decoration: BoxDecoration(
                             color: Color(0xFF1A2C54),
                             borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(20),
+                              topLeft: Radius.circular(22),
                               topRight: Radius.circular(0),
                               bottomLeft: Radius.circular(0),
                               bottomRight: Radius.circular(60),
@@ -240,8 +258,7 @@ class AdminProfilePage extends StatelessWidget {
                 padding: EdgeInsets.all(0),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: Colors.black),
+                  borderRadius: BorderRadius.circular(22),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -254,7 +271,7 @@ class AdminProfilePage extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Color(0xFF1A2C54),
                         borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
+                          topLeft: Radius.circular(22),
                           topRight: Radius.circular(0),
                           bottomLeft: Radius.circular(00),
                           bottomRight: Radius.circular(60),
@@ -277,6 +294,26 @@ class AdminProfilePage extends StatelessWidget {
                     ),
                     SizedBox(width: 40),
                   ],
+                ),
+              ),
+            ),
+            ListTile(
+              title: ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/edit_profile_page');
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFF1A2C54),
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10), // Rounded corners
+                  ),
+                  elevation: 5,
+                ),
+
+                child: Text(
+                  "Edit Profile",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
             ),

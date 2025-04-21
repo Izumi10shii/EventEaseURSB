@@ -1,10 +1,8 @@
 import 'dart:ui';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +13,6 @@ class ProfilePage extends StatelessWidget {
               begin: Alignment.topLeft, // Starting point of gradient
               end: Alignment.bottomRight, // Ending point of gradient
             ),*/
-
       body: Center(
         child: ListView(
           children: [
@@ -34,7 +31,6 @@ class ProfilePage extends StatelessWidget {
                         color: Colors.grey,
                       ),
                     ),
-                   
                   ],
                 ),
               ),
@@ -69,8 +65,7 @@ class ProfilePage extends StatelessWidget {
                         elevation: 0,
                       ),
 
-                      child: Icon(
-                        Icons.copy),
+                      child: Icon(Icons.copy),
                     ),
                   ],
                 ),
@@ -302,33 +297,26 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
             ),
-              ListTile(
-                title:  ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(
-                          context,
-                          '/edit_profile_page',
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
+            ListTile(
+              title: ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/edit_profile_page');
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFF1A2C54),
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10), // Rounded corners
+                  ),
+                  elevation: 5,
+                ),
 
-                        backgroundColor: Color(0xFF1A2C54),
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                            10,
-                          ), // Rounded corners
-                        ),
-                        elevation: 5,
-                      ),
-
-                      child: Text("Edit Profile",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold
-                      ),),
-                    )
+                child: Text(
+                  "Edit Profile",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
               ),
+            ),
           ],
         ),
       ),

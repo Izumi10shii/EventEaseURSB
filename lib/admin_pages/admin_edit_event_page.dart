@@ -20,7 +20,9 @@ class AdminEditEventPage extends StatelessWidget {
 
                   ),
                   child: Column(
-                    children: [Text("IMG")])),
+                    children: [Text("IMG"),
+                    ElevatedButton(onPressed: (){}, child: Icon(Icons.add))
+                    ])),
               ),
 
               ListTile(
@@ -49,8 +51,13 @@ class AdminEditEventPage extends StatelessWidget {
                   ),
                 ),
               ),
+ListTile(
+  title:
 
-              ElevatedButton(onPressed: () {}, child: Text("Add Event")),
+              ElevatedButton(
+               
+                onPressed: () {}, child: Text("Add Event")),
+)
             ],
           ),
         ),

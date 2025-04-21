@@ -44,7 +44,7 @@ class LoginPage extends StatelessWidget {
                         hintStyle: TextStyle(color: Colors.grey),
                         filled: true,
                         fillColor: Color(
-                          0xFFEFEFEF,
+                          0xFFFCFCFC,
                         ), // background color inside textfield
                         contentPadding: EdgeInsets.symmetric(
                           vertical: 14,
@@ -80,7 +80,7 @@ class LoginPage extends StatelessWidget {
                         hintStyle: TextStyle(color: Colors.grey),
                         filled: true,
                         fillColor: Color(
-                          0xFFEFEFEF,
+                          0xFFFCFCFC,
                         ), // background color inside textfield
                         contentPadding: EdgeInsets.symmetric(
                           vertical: 14,

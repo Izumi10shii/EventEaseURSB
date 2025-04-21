@@ -114,7 +114,6 @@ class EditProfilePage extends StatelessWidget {
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-
                   children: [
                     Row(
                       children: [
@@ -236,7 +235,9 @@ class EditProfilePage extends StatelessWidget {
                 ),
               ),
             ),
-            ElevatedButton(
+
+            ListTile(
+            title: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFF0A1D34),
                 foregroundColor: Colors.white,
@@ -251,6 +252,7 @@ class EditProfilePage extends StatelessWidget {
               },
               child: Text("Save Profile"),
             ),
+              )
           ],
         ),
       ),
