@@ -115,12 +115,14 @@ class EventInfoPage extends StatelessWidget {
                           ),
 
                           SizedBox(height: 20),
-                          ElevatedButton(
+                          ListTile(
+
+                          title: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Color(0xFF0A1D34),
                               foregroundColor: Colors.white,
                               padding: EdgeInsets.symmetric(
-                                horizontal: 60,
+                                horizontal: 0,
                                 vertical: 10,
                               ),
                               shape: RoundedRectangleBorder(
@@ -135,6 +137,7 @@ class EventInfoPage extends StatelessWidget {
                               Navigator.pushNamed(context, '/receipt_page');
                             },
                             child: Text("Register for Event"),
+                          )
                           ),
                         ],
                       ),

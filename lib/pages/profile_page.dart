@@ -57,6 +57,7 @@ class ProfilePage extends StatelessWidget {
                         minimumSize: Size(40, 40),
                         backgroundColor: Colors.white,
                         foregroundColor: Colors.black,
+                        padding: EdgeInsets.symmetric(horizontal: 0, vertical: 10),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(
                             20,

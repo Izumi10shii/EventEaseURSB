@@ -37,7 +37,18 @@ class EditProfilePage extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: 20),
-                    ElevatedButton(onPressed: () {}, child: Icon(Icons.copy)),
+                    ElevatedButton(onPressed: () {}, 
+                    style: ElevatedButton.styleFrom(
+                        minimumSize: Size(40, 40),
+                        backgroundColor: Colors.white,
+                        foregroundColor: Colors.black,
+                        padding: EdgeInsets.symmetric(horizontal: 0, vertical: 10),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            20,
+                          ), // Rounded corners
+                        ),),
+                    child: Icon(Icons.copy)),
                   ],
                 ),
               ),
@@ -139,7 +150,7 @@ class EditProfilePage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(width: 60),
+                        SizedBox(width: 20),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xFF1A2C54),
@@ -148,7 +159,7 @@ class EditProfilePage extends StatelessWidget {
                           onPressed: () {},
                           child: Icon(Icons.add),
                         ),
-                        SizedBox(width: 20),
+                        SizedBox(width: 10),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xFF1A2C54),

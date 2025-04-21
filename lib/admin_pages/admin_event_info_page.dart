@@ -120,12 +120,13 @@ class AdminEventInfoPage extends StatelessWidget {
 
 
                           //
-                          ElevatedButton(
+                          ListTile(
+                          title: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Color(0xFF0A1D34),
                               foregroundColor: Colors.white,
                               padding: EdgeInsets.symmetric(
-                                horizontal: 60,
+                                horizontal: 0,
                                 vertical: 10,
                               ),
                               shape: RoundedRectangleBorder(
@@ -143,6 +144,7 @@ class AdminEventInfoPage extends StatelessWidget {
                           ),
 
 
+                          )
 
 
 

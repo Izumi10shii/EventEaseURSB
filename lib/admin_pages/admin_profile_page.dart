@@ -305,6 +305,7 @@ class AdminProfilePage extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xFF1A2C54),
                   foregroundColor: Colors.white,
+                  padding: EdgeInsets.symmetric(horizontal: 0, vertical: 10),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10), // Rounded corners
                   ),
