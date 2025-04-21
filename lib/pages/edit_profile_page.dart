@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
-class AdminEditProfilePage extends StatelessWidget {
-  const AdminEditProfilePage({super.key});
+class EditProfilePage extends StatelessWidget {
+  const EditProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue,
       body: Center(
         child: ListView(
           children: [
@@ -32,6 +33,7 @@ class AdminEditProfilePage extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 40,
                         fontWeight: FontWeight.bold,
+                        color: Colors.white
                       ),
                     ),
                     SizedBox(width: 20),
@@ -46,6 +48,18 @@ class AdminEditProfilePage extends StatelessWidget {
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   label: Text("Username"),
+                  filled: true,
+                        fillColor: Color(
+                          0xFFFFFFFF,
+                        ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: BorderSide(color: Colors.transparent),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: BorderSide(color: Color(0xFF1A2C54), width: 2),
+                  ),
                 ),
               ),
             ),
@@ -54,6 +68,18 @@ class AdminEditProfilePage extends StatelessWidget {
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   label: Text("Program"),
+                  filled: true,
+                        fillColor: Color(
+                          0xFFFFFFFF,
+                        ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: BorderSide(color: Colors.transparent),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: BorderSide(color: Color(0xFF1A2C54), width: 2),
+                  ),
                 ),
               ),
             ),
@@ -62,6 +88,18 @@ class AdminEditProfilePage extends StatelessWidget {
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   label: Text("Section"),
+                  filled: true,
+                        fillColor: Color(
+                          0xFFFFFFFF,
+                        ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: BorderSide(color: Colors.transparent),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide(color: Color(0xFF1A2C54), width: 2),
+                  ),
                 ),
               ),
             ),
@@ -73,7 +111,6 @@ class AdminEditProfilePage extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: Colors.black),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -137,6 +174,13 @@ class AdminEditProfilePage extends StatelessWidget {
                             decoration: InputDecoration(
                               border: OutlineInputBorder(),
                               label: Text("Add New Interest"),
+                              enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: BorderSide(color: Color(0xFF1A2C54), width: 2),
+                  ),
                             ),
                           ),
                           SizedBox(width: 40),
@@ -152,8 +196,8 @@ class AdminEditProfilePage extends StatelessWidget {
                 padding: EdgeInsets.all(0),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: Colors.black),
+                  borderRadius: BorderRadius.circular(15),
+
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -166,7 +210,7 @@ class AdminEditProfilePage extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Color(0xFF1A2C54),
                         borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
+                          topLeft: Radius.circular(22),
                           topRight: Radius.circular(0),
                           bottomLeft: Radius.circular(00),
                           bottomRight: Radius.circular(60),

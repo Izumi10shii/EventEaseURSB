@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_event_ease/pages/edit_profile_page.dart';
 import 'package:flutter_event_ease/pages/event_info_page.dart';
 import 'package:flutter_event_ease/pages/home_page.dart';
 import 'package:flutter_event_ease/pages/index_page.dart';
@@ -46,6 +47,10 @@ await Firebase.initializeApp(
   db.collection("users").add(user).then((DocumentReference doc) => 
   print('DocumentSnapshot added with ID: ${doc.id}'));
 
+  
+
+
+
 runApp(const MyApp());
 } 
 
@@ -78,7 +83,7 @@ class MyApp extends StatelessWidget {
         '/home_page': (context) => HomePage(),
         '/event_info_page': (context) => EventInfoPage(), 
         '/receipt_page': (context) => ReceiptPage(),
-        '/edit_profile_page': (context) => ReceiptPage(),
+        '/edit_profile_page': (context) => EditProfilePage(),
 
 
         //Admin Pages
