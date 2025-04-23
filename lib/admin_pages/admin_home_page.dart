@@ -28,6 +28,29 @@ class AdminHomePage extends StatelessWidget {
               ),
 
               ListTile(
+                title: Padding(
+                  padding: EdgeInsets.only(left: 20, right: 20, top: 10),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFF1A2C54),
+                      foregroundColor: Colors.white,
+                      padding: EdgeInsets.symmetric(vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      textStyle:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(
+                          context, '/admin_edit_event_page'); // Redirect to admin_edit_event_page
+                    },
+                    child: Text("Add Event"),
+                  ),
+                ),
+              ),
+
+              ListTile(
                 title: Container(
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: TextField(

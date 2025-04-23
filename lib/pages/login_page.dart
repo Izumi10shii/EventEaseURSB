@@ -1,9 +1,51 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_event_ease/pages/register_page.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  static route() => MaterialPageRoute(builder: (context) => LoginPage());
   const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  Future<void> loginUser() async {
+    try {
+      final userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+            email: emailController.text.trim(),
+            password: passwordController.text.trim(),
+          );
+      print(userCredential);
+
+      if (userCredential.user != null) {
+        Navigator.pushReplacementNamed(
+          context,
+          '/nav_page',
+        ); // Replace with your home page route
+      }
+    } on FirebaseAuthException catch (e) {
+      // Show an error message if login fails
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(e.message ?? 'Login failed')));
+      print(e.message);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +81,7 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                     subtitle: TextField(
+                      controller: emailController,
                       decoration: InputDecoration(
                         hintText: 'B2023-00290',
                         hintStyle: TextStyle(color: Colors.grey),
@@ -75,6 +118,8 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                     subtitle: TextField(
+                      controller: passwordController,
+                      obscureText: true,
                       decoration: InputDecoration(
                         hintText: '********',
                         hintStyle: TextStyle(color: Colors.grey),
@@ -103,7 +148,7 @@ class LoginPage extends StatelessWidget {
                   ),
                   SizedBox(height: 20),
                   ListTile(
-                    title: Container(
+                    title: SizedBox(
                       width: double.infinity,
 
                       child: ElevatedButton(
@@ -122,8 +167,8 @@ class LoginPage extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/nav_page');
+                        onPressed: () async {
+                          await loginUser();
                         },
                         child: Text("Login"),
                       ),

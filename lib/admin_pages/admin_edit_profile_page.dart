@@ -9,7 +9,9 @@ class AdminEditProfilePage extends StatelessWidget {
       backgroundColor: Colors.blue,
       body: Center(
         child: ListView(
+          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
           children: [
+            // Profile Image
             ListTile(
               title: Align(
                 child: Container(
@@ -19,9 +21,18 @@ class AdminEditProfilePage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(999),
                     color: Colors.grey,
                   ),
+                  child: Center(
+                    child: Icon(
+                      Icons.person,
+                      size: 100,
+                      color: Colors.white70,
+                    ),
+                  ),
                 ),
               ),
             ),
+
+            // Username and Copy Button
             ListTile(
               title: Align(
                 alignment: Alignment.center,
@@ -31,238 +42,217 @@ class AdminEditProfilePage extends StatelessWidget {
                     Text(
                       "@username",
                       style: TextStyle(
-                        fontSize: 40,
+                        fontSize: 36,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white
+                        color: Colors.white,
                       ),
                     ),
-                    SizedBox(width: 20),
-                    ElevatedButton(onPressed: () {}, 
-                    style: ElevatedButton.styleFrom(
+                    SizedBox(width: 10),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
                         minimumSize: Size(40, 40),
                         backgroundColor: Colors.white,
                         foregroundColor: Colors.black,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                            20,
-                          ), // Rounded corners
-                        ),),
-                    child: Icon(Icons.copy)),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        elevation: 2,
+                      ),
+                      child: Icon(Icons.copy, size: 20),
+                    ),
                   ],
                 ),
               ),
             ),
 
-            ListTile(
-              title: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  label: Text("Username"),
-                  filled: true,
-                        fillColor: Color(
-                          0xFFFFFFFF,
-                        ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide(color: Colors.transparent),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide(color: Color(0xFF1A2C54), width: 2),
-                  ),
-                ),
-              ),
-            ),
-            ListTile(
-              title: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  label: Text("Program"),
-                  filled: true,
-                        fillColor: Color(
-                          0xFFFFFFFF,
-                        ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide(color: Colors.transparent),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide(color: Color(0xFF1A2C54), width: 2),
-                  ),
-                ),
-              ),
-            ),
-            ListTile(
-              title: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  label: Text("Section"),
-                  filled: true,
-                        fillColor: Color(
-                          0xFFFFFFFF,
-                        ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide(color: Colors.transparent),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Color(0xFF1A2C54), width: 2),
-                  ),
-                ),
-              ),
-            ),
+            SizedBox(height: 20),
 
-            //Interest
+            // Text Fields
+            _buildTextField("Username"),
+            _buildTextField("Program"),
+            _buildTextField("Section"),
+
+            SizedBox(height: 20),
+
+            // Interests Section
+            _buildInterestsSection(),
+
+            SizedBox(height: 20),
+
+            // Recent Activities Section
+            _buildRecentActivitiesSection(),
+
+            SizedBox(height: 20),
+
+            // Save Profile Button
             ListTile(
-              title: Container(
-                padding: EdgeInsets.all(0),
-                decoration: BoxDecoration(
+              title: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFF0A1D34),
+                  foregroundColor: Colors.white,
+                  padding: EdgeInsets.symmetric(vertical: 12),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/admin_profile_page');
+                },
+                child: Text("Save Profile"),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // Helper method to build text fields
+  Widget _buildTextField(String label) {
+    return ListTile(
+      title: TextField(
+        decoration: InputDecoration(
+          labelText: label,
+          filled: true,
+          fillColor: Colors.white,
+          contentPadding: EdgeInsets.symmetric(vertical: 14, horizontal: 16),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: BorderSide(color: Colors.transparent),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: BorderSide(color: Color(0xFF1A2C54), width: 2),
+          ),
+        ),
+      ),
+    );
+  }
+
+  // Helper method to build interests section
+  Widget _buildInterestsSection() {
+    return ListTile(
+      title: Container(
+        padding: EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  decoration: BoxDecoration(
+                    color: Color(0xFF1A2C54),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      bottomRight: Radius.circular(60),
+                    ),
+                  ),
+                  child: Text(
+                    "Interest",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                Spacer(),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFF1A2C54),
+                    foregroundColor: Colors.white,
+                  ),
+                  onPressed: () {},
+                  child: Icon(Icons.add),
+                ),
+                SizedBox(width: 10),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFF1A2C54),
+                    foregroundColor: Colors.white,
+                  ),
+                  onPressed: () {},
+                  child: Icon(Icons.delete),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Ethanol"),
+                  Text("Ikimandians"),
+                  Text("Marilag"),
+                  SizedBox(height: 10),
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: "Add New Interest",
+                      filled: true,
+                      fillColor: Colors.white,
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide: BorderSide(color: Colors.transparent),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide: BorderSide(color: Color(0xFF1A2C54), width: 2),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // Helper method to build recent activities section
+  Widget _buildRecentActivitiesSection() {
+    return ListTile(
+      title: Container(
+        padding: EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+              decoration: BoxDecoration(
+                color: Color(0xFF1A2C54),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(22),
+                  bottomRight: Radius.circular(60),
+                ),
+              ),
+              child: Text(
+                "Recent Activities",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 10,
-                            horizontal: 40,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Color(0xFF1A2C54),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(20),
-                              topRight: Radius.circular(0),
-                              bottomLeft: Radius.circular(0),
-                              bottomRight: Radius.circular(60),
-                            ),
-                          ),
-                          child: Text(
-                            "Interest",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 20),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFF1A2C54),
-                            foregroundColor: Colors.white,
-                          ),
-                          onPressed: () {},
-                          child: Icon(Icons.add),
-                        ),
-                        SizedBox(width: 10),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFF1A2C54),
-                            foregroundColor: Colors.white,
-                          ),
-                          onPressed: () {},
-                          child: Icon(Icons.delete),
-                        ),
-                      ],
-                    ),
-                    SizedBox(width: 40),
-                    //put in container
-                    Padding(
-                      padding: EdgeInsets.all(20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Ethanol"), //add check box
-                          Text("Ikimandians"),
-                          Text("Marilag"),
-                          TextField(
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              label: Text("Add New Interest"),
-                              enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide(color: Color(0xFF1A2C54), width: 2),
-                  ),
-                            ),
-                          ),
-                          SizedBox(width: 40),
-                        ],
-                      ),
-                    ),
-                  ],
                 ),
               ),
             ),
-            ListTile(
-              title: Container(
-                padding: EdgeInsets.all(0),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
-
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 10,
-                        horizontal: 40,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Color(0xFF1A2C54),
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(22),
-                          topRight: Radius.circular(0),
-                          bottomLeft: Radius.circular(00),
-                          bottomRight: Radius.circular(60),
-                        ),
-                      ),
-                      child: Text(
-                        "Recent Activities",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 40),
-                    Padding(
-                      padding: EdgeInsets.all(20),
-                      child: Text(
-                        "03/25/2025 | Attended URS Binangonan College Week: March...",
-                      ),
-                    ),
-                    SizedBox(width: 40),
-                  ],
-                ),
+            SizedBox(height: 10),
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: Text(
+                "03/25/2025 | Attended URS Binangonan College Week: March...",
+                style: TextStyle(fontSize: 16),
               ),
             ),
-
-            ListTile(
-            title: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF0A1D34),
-                foregroundColor: Colors.white,
-                padding: EdgeInsets.symmetric(horizontal: 0, vertical: 10),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                textStyle: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, '/admin_profile_page');
-              },
-              child: Text("Save Profile"),
-            ),
-              )
           ],
         ),
       ),

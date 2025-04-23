@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class COAEventsPage extends StatelessWidget {
-  COAEventsPage({super.key});
+  const COAEventsPage({super.key});
 
   @override
   Widget build(BuildContext context){

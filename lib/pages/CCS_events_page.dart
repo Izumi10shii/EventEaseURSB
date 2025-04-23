@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CCSEventsPage extends StatelessWidget {
-  CCSEventsPage({super.key});
+  const CCSEventsPage({super.key});
 
   @override
   Widget build(BuildContext context){

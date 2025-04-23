@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart'; // Import for date formatting
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -9,8 +11,8 @@ class HomePage extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: ListView(
-            //ListView = Scrollable Column
             children: [
+              // Title
               ListTile(
                 title: Padding(
                   padding: EdgeInsets.only(left: 20),
@@ -27,6 +29,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
 
+              // Search bar
               ListTile(
                 title: Container(
                   padding: EdgeInsets.symmetric(horizontal: 20),
@@ -35,9 +38,7 @@ class HomePage extends StatelessWidget {
                       hintText: 'Search Events',
                       hintStyle: TextStyle(color: Colors.grey),
                       filled: true,
-                      fillColor: Color(
-                        0xFFEFEFEF,
-                      ), // background color inside textfield
+                      fillColor: Color(0xFFEFEFEF),
                       contentPadding: EdgeInsets.symmetric(
                         vertical: 14,
                         horizontal: 20,
@@ -48,7 +49,6 @@ class HomePage extends StatelessWidget {
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
-
                         borderSide: BorderSide(
                           color: Color(0xFF1A2C54),
                           width: 2,
@@ -56,12 +56,14 @@ class HomePage extends StatelessWidget {
                       ),
                       suffixIcon: Icon(Icons.search),
                     ),
-                    style: TextStyle(color: Colors.black), // typing te
+                    style: TextStyle(color: Colors.black),
                   ),
                 ),
               ),
 
               SizedBox(height: 20),
+
+              // College Departments title
               ListTile(
                 title: Padding(
                   padding: EdgeInsets.only(left: 20),
@@ -78,11 +80,13 @@ class HomePage extends StatelessWidget {
                 ),
               ),
 
+              // Department buttons
               ListTile(
                 title: Container(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      // COA Button
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.purple,
@@ -90,13 +94,7 @@ class HomePage extends StatelessWidget {
                           elevation: 8,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
-                            side: BorderSide(
-                              color: Colors.white, // Border color
-                              width: 2, // Border width
-                              style:
-                                  BorderStyle
-                                      .solid, // Border style (can be solid, dashed, etc.)
-                            ),
+                            side: BorderSide(color: Colors.white, width: 2),
                           ),
                           textStyle: TextStyle(
                             fontSize: 20,
@@ -108,22 +106,17 @@ class HomePage extends StatelessWidget {
                         },
                         child: Text("COA"),
                       ),
-
                       SizedBox(width: 10),
+
+                      // COB Button
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          elevation: 8,
                           backgroundColor: Colors.red,
                           foregroundColor: Colors.white,
+                          elevation: 8,
                           shape: RoundedRectangleBorder(
-                            side: BorderSide(
-                              color: Colors.white, // Border color
-                              width: 2, // Border width
-                              style:
-                                  BorderStyle
-                                      .solid, // Border style (can be solid, dashed, etc.)
-                            ),
                             borderRadius: BorderRadius.circular(12),
+                            side: BorderSide(color: Colors.white, width: 2),
                           ),
                           textStyle: TextStyle(
                             fontSize: 20,
@@ -137,20 +130,15 @@ class HomePage extends StatelessWidget {
                       ),
                       SizedBox(width: 10),
 
+                      // CCS Button
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          elevation: 8,
                           backgroundColor: Colors.blue,
                           foregroundColor: Colors.white,
+                          elevation: 8,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
-                            side: BorderSide(
-                              color: Colors.white, // Border color
-                              width: 2, // Border width
-                              style:
-                                  BorderStyle
-                                      .solid, // Border style (can be solid, dashed, etc.)
-                            ),
+                            side: BorderSide(color: Colors.white, width: 2),
                           ),
                           textStyle: TextStyle(
                             fontSize: 20,
@@ -167,256 +155,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
 
-              ListTile(
-                title: Padding(
-                  padding: EdgeInsets.only(left: 20, top: 30),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      "Featured Events",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-
-              Padding(
-                padding: EdgeInsets.only(left: 20, top: 10),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          //Click on First Event Card
-                          Navigator.pushNamed(context, '/event_info_page');
-                        },
-                        // First Event Card
-                        child: Container(
-                          width: 300,
-                          height: 200,
-                          margin: EdgeInsets.only(
-                            right: 10,
-                          ), // Space between cards
-                          decoration: BoxDecoration(
-                            color: Color(0xFFD9D9D9),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              // Date Box
-                              Container(
-                                width: 60,
-                                height: 55,
-                                margin: EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "Mar",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18,
-                                      ),
-                                    ),
-                                    Text(
-                                      "21",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Spacer(),
-                              Center(
-                                child: Text(
-                                  "IMG",
-                                  style: TextStyle(
-                                    fontSize: 40,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-
-                              Spacer(),
-                              Padding(
-                                padding: EdgeInsets.only(left: 20, bottom: 10),
-                                child: Text(
-                                  "Intramurals",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      // Second Event Card
-                      GestureDetector(
-                        onTap: () {
-                          //Click on First Event Card
-                          Navigator.pushNamed(context, '/event_info_page');
-                        },
-                        // First Event Card
-                        child: Container(
-                          width: 300,
-                          height: 200,
-                          margin: EdgeInsets.only(
-                            right: 10,
-                          ), // Space between cards
-                          decoration: BoxDecoration(
-                            color: Color(0xFFD9D9D9),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              // Date Box
-                              Container(
-                                width: 60,
-                                height: 55,
-                                margin: EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "Mar",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18,
-                                      ),
-                                    ),
-                                    Text(
-                                      "21",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Spacer(),
-                              Center(
-                                child: Text(
-                                  "IMG",
-                                  style: TextStyle(
-                                    fontSize: 40,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-
-                              Spacer(),
-                              Padding(
-                                padding: EdgeInsets.only(left: 20, bottom: 10),
-                                child: Text(
-                                  "Sports Festival",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      // Add more cards as needed
-                      GestureDetector(
-                        onTap: () {
-                          //Click on First Event Card
-                          Navigator.pushNamed(context, '/event_info_page');
-                        },
-                        // First Event Card
-                        child: Container(
-                          width: 300,
-                          height: 200,
-                          margin: EdgeInsets.only(
-                            right: 10,
-                          ), // Space between cards
-                          decoration: BoxDecoration(
-                            color: Color(0xFFD9D9D9),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              // Date Box
-                              Container(
-                                width: 60,
-                                height: 55,
-                                margin: EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "Mar",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18,
-                                      ),
-                                    ),
-                                    Text(
-                                      "21",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Spacer(),
-                              Center(
-                                child: Text(
-                                  "IMG",
-                                  style: TextStyle(
-                                    fontSize: 40,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-
-                              Spacer(),
-                              Padding(
-                                padding: EdgeInsets.only(left: 20, bottom: 10),
-                                child: Text(
-                                  "Holy Week",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              // Upcoming Events title
               ListTile(
                 title: Padding(
                   padding: EdgeInsets.only(left: 20, top: 30),
@@ -432,199 +171,111 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
-              ListTile(
-                title: Padding(
-                  padding: EdgeInsets.only(left: 20, top: 10),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Column(
-                        children: [
-                          Text(
-                            "Mar",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 24,
+
+              // Event cards fetched dynamically
+              FutureBuilder<QuerySnapshot>(
+                future: FirebaseFirestore.instance.collection('event_info').get(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator());
+                  }
+                  if (snapshot.hasError) {
+                    return Center(child: Text("Error fetching events"));
+                  }
+                  if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                    return Center(child: Text("No upcoming events"));
+                  }
+
+                  final events = snapshot.data!.docs;
+
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: events.length,
+                    itemBuilder: (context, index) {
+                      final event = events[index];
+                      return ListTile(
+                        onTap: () {
+                          Navigator.pushNamed(context, '/event_info_page', arguments: event.id);
+                        },
+                        title: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          child: Container(
+                            width: double.infinity,
+                            height: 220, // Adjusted total height
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(18),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black26,
+                                  blurRadius: 6,
+                                  offset: Offset(0, 3),
+                                ),
+                              ],
+                            ),
+                            child: Column(
+                              children: [
+                                // Image placeholder with increased height
+                                Container(
+                                  height: 160, // Increased height
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFFD9D9D9),
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(18),
+                                      topRight: Radius.circular(18),
+                                    ),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      "IMG",
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                // Event details with reduced height
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          event['Event Name'] ?? "Event Name", // Corrected key
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black87,
+                                          ),
+                                        ),
+                                        Text(
+                                          event['Date & Time'] != null
+                                              ? DateFormat('MMM dd, yyyy - hh:mm a').format(
+                                                  (event['Date & Time'] as Timestamp).toDate(), // Convert Timestamp to DateTime
+                                                )
+                                              : "Event Date", // Fallback value
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.grey[600],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                          Container(width: 2, height: 320, color: Colors.black),
-                        ],
-                      ),
-                      SizedBox(width: 10),
-
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            // First event card
-                            Container(
-                              width: double.infinity,
-                              height: 180,
-                              decoration: BoxDecoration(
-                                color: Color(0xFFD9D9D9),
-                                borderRadius: BorderRadius.circular(18),
-                              ),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: Center(
-                                      child: Text(
-                                        "IMG",
-                                        style: TextStyle(
-                                          fontSize: 40,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(height: 5),
-                            Text(
-                              "Holy Week",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                              ),
-                            ),
-                            SizedBox(height: 20),
-
-                            // Second event card
-                            Container(
-                              width: double.infinity,
-                              height: 180,
-                              decoration: BoxDecoration(
-                                color: Color(0xFFD9D9D9),
-                                borderRadius: BorderRadius.circular(18),
-                              ),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: Center(
-                                      child: Text(
-                                        "IMG",
-                                        style: TextStyle(
-                                          fontSize: 40,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(height: 5),
-                            Text(
-                              "Labor Day",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                              ),
-                            ),
-                          ],
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              ListTile(
-                title: Padding(
-                  padding: EdgeInsets.only(left: 20, top: 10),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Column(
-                        children: [
-                          Text(
-                            "Apr",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 24,
-                            ),
-                          ),
-                          Container(width: 2, height: 320, color: Colors.black),
-                        ],
-                      ),
-                      SizedBox(width: 10),
-
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            // First event card
-                            Container(
-                              width: double.infinity,
-                              height: 180,
-                              decoration: BoxDecoration(
-                                color: Color(0xFFD9D9D9),
-                                borderRadius: BorderRadius.circular(18),
-                              ),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: Center(
-                                      child: Text(
-                                        "IMG",
-                                        style: TextStyle(
-                                          fontSize: 40,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(height: 5),
-                            Text(
-                              "April Fool's Day",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                              ),
-                            ),
-                            SizedBox(height: 20),
-
-                            // Second event card
-                            Container(
-                              width: double.infinity,
-                              height: 180,
-                              decoration: BoxDecoration(
-                                color: Color(0xFFD9D9D9),
-                                borderRadius: BorderRadius.circular(18),
-                              ),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: Center(
-                                      child: Text(
-                                        "IMG",
-                                        style: TextStyle(
-                                          fontSize: 40,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(height: 5),
-                            Text(
-                              "Graduation",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                      );
+                    },
+                  );
+                },
               ),
             ],
           ),

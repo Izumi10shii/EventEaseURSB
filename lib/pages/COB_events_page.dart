@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class COBEventsPage extends StatelessWidget {
-  COBEventsPage({super.key});
+  const COBEventsPage({super.key});
 
   @override
   Widget build(BuildContext context){

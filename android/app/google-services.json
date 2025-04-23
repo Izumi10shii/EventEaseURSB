@@ -9,12 +9,12 @@
       "client_info": {
         "mobilesdk_app_id": "1:484924505004:android:afae5b23dd93bb97b45809",
         "android_client_info": {
-          "package_name": "com.example.flutter_event_ease"
+          "package_name": "com.example.eventeaseursb"
         }
       },
       "oauth_client": [],
       "api_key": [
-        {
+        { 
           "current_key": "AIzaSyAcAXroxRRhL_49LnJgvsVuhKOxOwZ8b9w"
         }
       ],

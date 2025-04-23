@@ -1,6 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class AdminPage extends StatelessWidget {
+class AdminPage extends StatefulWidget {
+  const AdminPage({super.key});
+
+  @override
+  State<AdminPage> createState() => _AdminPageState();
+}
+
+class _AdminPageState extends State<AdminPage> {
+final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+Future<void> loginAdmin() async {
+    try {
+      final userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+            email: emailController.text.trim(),
+            password: passwordController.text.trim(),
+          );
+      print(userCredential);
+
+      if (userCredential.user != null) {
+        Navigator.pushReplacementNamed(
+          context,
+          '/nav_page',
+        ); // Replace with your home page route
+      }
+    } on FirebaseAuthException catch (e) {
+      // Show an error message if login fails
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(e.message ?? 'Login failed')));
+    } on FirebaseAuthException catch (e) {
+      print(e.message);
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,6 +79,7 @@ class AdminPage extends StatelessWidget {
                       ),
                     ),
                     subtitle: TextField(
+                      controller: emailController,
                       decoration: InputDecoration(
                         hintText: 'B2023-00290',
                         hintStyle: TextStyle(color: Colors.grey),
@@ -71,6 +116,7 @@ class AdminPage extends StatelessWidget {
                       ),
                     ),
                     subtitle: TextField(
+                      controller: passwordController,
                       decoration: InputDecoration(
                         hintText: '********',
                         hintStyle: TextStyle(color: Colors.grey),
@@ -117,8 +163,8 @@ class AdminPage extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        onPressed: () {
-                          // This is where the navigation happens
+                        onPressed: () async {
+                          await loginAdmin();
                           Navigator.pushNamed(context, '/admin_nav_page');
                         },
                         child: Text("Login as Admin"),

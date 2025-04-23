@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ParticipantsPage extends StatelessWidget {
-  ParticipantsPage({super.key});
+  const ParticipantsPage({super.key});
 
   @override
   Widget build(BuildContext context) {

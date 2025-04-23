@@ -25,7 +25,6 @@ import 'package:flutter_event_ease/admin_pages/admin_edit_profile_page.dart';
 //FIREBASE START
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart'; 
 
 late FirebaseFirestore db; 

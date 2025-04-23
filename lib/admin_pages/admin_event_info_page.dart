@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AdminEventInfoPage extends StatelessWidget {
-  AdminEventInfoPage({super.key});
+  const AdminEventInfoPage({super.key});
 
   @override
   Widget build(BuildContext context) {

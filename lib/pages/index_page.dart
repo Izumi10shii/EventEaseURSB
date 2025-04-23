@@ -43,7 +43,7 @@ SizedBox(height: 40,),
 
               SizedBox(height: 40,),
 
-              Container(
+              SizedBox(
                 width: double.infinity,
                 child: Column(
                   children:

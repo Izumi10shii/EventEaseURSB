@@ -36,59 +36,82 @@ class ReminderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 120,
+      height: 140, // Increased height for better spacing
       decoration: BoxDecoration(
         color: Color(0xFF0A1D34),
         borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black26,
+            blurRadius: 6,
+            offset: Offset(0, 3),
+          ),
+        ],
       ),
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      padding: EdgeInsets.all(16),
       child: Row(
         children: [
+          // Image placeholder with larger size
           Container(
-            padding: EdgeInsets.all(20),
+            width: 80,
+            height: 80,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(15),
             ),
-            child: Text("IMG"),
+            child: Center(
+              child: Text(
+                "IMG",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black54,
+                ),
+              ),
+            ),
           ),
           SizedBox(width: 20),
+          // Event details
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Art to Success: ",
+                  "Art to Success:",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
+                  overflow: TextOverflow.ellipsis, // Handle overflow
+                  maxLines: 1,
                 ),
+                SizedBox(height: 5),
                 Text(
                   "Introduction to Gra...",
                   style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
+                    color: Colors.white70,
+                    fontSize: 16,
                   ),
+                  overflow: TextOverflow.ellipsis, // Handle overflow
+                  maxLines: 1,
                 ),
               ],
             ),
           ),
           SizedBox(width: 10),
+          // Notification button with modern style
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: Color(0xFF1A2C54),
               foregroundColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              minimumSize: Size(40, 40),
-              padding: EdgeInsets.zero,
+              shape: CircleBorder(),
+              padding: EdgeInsets.all(12),
+              elevation: 5,
             ),
             onPressed: () {},
-            child: Icon(Icons.notifications),
+            child: Icon(Icons.notifications, size: 24),
           ),
         ],
       ),

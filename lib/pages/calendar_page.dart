@@ -23,13 +23,56 @@ class CalendarPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-            Container(
+            // Animated TableCalendar
+            AnimatedContainer(
+              duration: Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
               padding: EdgeInsets.symmetric(horizontal: 8),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black26,
+                    blurRadius: 6,
+                    offset: Offset(0, 3),
+                  ),
+                ],
+              ),
               child: TableCalendar(
-                rowHeight: 43,
+                rowHeight: 50, // Increased row height for better spacing
                 headerStyle: HeaderStyle(
                   formatButtonVisible: false,
                   titleCentered: true,
+                  titleTextStyle: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue,
+                  ),
+                  leftChevronIcon: Icon(Icons.chevron_left, color: Colors.blue),
+                  rightChevronIcon: Icon(Icons.chevron_right, color: Colors.blue),
+                ),
+                daysOfWeekStyle: DaysOfWeekStyle(
+                  weekdayStyle: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                  ),
+                  weekendStyle: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red,
+                  ),
+                ),
+                calendarStyle: CalendarStyle(
+                  todayDecoration: BoxDecoration(
+                    color: Colors.blue,
+                    shape: BoxShape.circle,
+                  ),
+                  selectedDecoration: BoxDecoration(
+                    color: Colors.orange,
+                    shape: BoxShape.circle,
+                  ),
+                  weekendTextStyle: TextStyle(color: Colors.red),
+                  defaultTextStyle: TextStyle(color: Colors.black87),
                 ),
                 focusedDay: today,
                 firstDay: DateTime.utc(2024, 1, 1),
@@ -91,31 +134,54 @@ class EventCard extends StatelessWidget {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 20,
+            color: Colors.black87,
           ),
         ),
         SizedBox(height: 10),
-        Container(
+        // Animated EventCard
+        AnimatedContainer(
+          duration: Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
           width: double.infinity,
           decoration: BoxDecoration(
             color: Colors.blue,
             borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black26,
+                blurRadius: 6,
+                offset: Offset(0, 3),
+              ),
+            ],
           ),
           padding: EdgeInsets.all(16),
           child: Row(
             children: [
+              // Image placeholder with larger size
               Container(
-                padding: EdgeInsets.all(20),
+                width: 80,
+                height: 80,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(15),
                 ),
-                child: Text("IMG"),
-
+                child: Center(
+                  child: Text(
+                    "IMG",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black54,
+                    ),
+                  ),
+                ),
               ),
               SizedBox(width: 16),
+              // Event details
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       title,
@@ -124,20 +190,28 @@ class EventCard extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
                       ),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
                     ),
+                    SizedBox(height: 5),
                     Text(
                       date,
                       style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
+                        color: Colors.white70,
+                        fontSize: 16,
                       ),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
                     ),
+                    SizedBox(height: 5),
                     Text(
                       time,
                       style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
+                        color: Colors.white70,
+                        fontSize: 16,
                       ),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
                     ),
                   ],
                 ),

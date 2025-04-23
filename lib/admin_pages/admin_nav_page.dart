@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_event_ease/pages/calendar_page.dart';
-import 'package:flutter_event_ease/pages/home_page.dart';
-import 'package:flutter_event_ease/pages/profile_page.dart';
-import 'package:flutter_event_ease/pages/reminders_page.dart';
 
-import 'package:flutter/material.dart';
-import 'package:flutter_event_ease/pages/calendar_page.dart';
 import 'package:flutter_event_ease/admin_pages/event_manager_page.dart';
 import 'package:flutter_event_ease/admin_pages/admin_home_page.dart';
 import 'package:flutter_event_ease/admin_pages/admin_profile_page.dart';
