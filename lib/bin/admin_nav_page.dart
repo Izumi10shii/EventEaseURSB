@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_event_ease/pages/calendar_page.dart';
 
 import 'package:flutter_event_ease/admin_pages/event_manager_page.dart';
-import 'package:flutter_event_ease/admin_pages/admin_home_page.dart';
+
 import 'package:flutter_event_ease/admin_pages/admin_profile_page.dart';
 
 
@@ -24,7 +24,6 @@ class _AdminNavPageState extends State<AdminNavPage> {
 
   final List _pages = [
 
-    AdminHomePage(),
 
     CalendarPage(),
 

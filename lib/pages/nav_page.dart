@@ -21,7 +21,7 @@ class _NavPageState extends State<NavPage> {
   }
 
   final List _pages = [
-    HomePage(),
+    HomePage(isAdmin: false), // Pass the required isAdmin parameter
     CalendarPage(),
     RemindersPage(),
     ProfilePage(),

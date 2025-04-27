@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_event_ease/pages/login_page.dart';
+import 'package:flutter_event_ease/pages/register_page_pt2.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -128,7 +129,7 @@ class RegisterPageState extends State<RegisterPage> {
               ),
               ListTile(
                 title: Text(
-                  "Student ID",
+                  "Email",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
@@ -162,150 +163,7 @@ class RegisterPageState extends State<RegisterPage> {
                   style: TextStyle(color: Colors.black), // typing te
                 ),
               ),
-              ListTile(
-                title: Text(
-                  "Username",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-                subtitle: TextField(
-                  controller: usernameController,
-                  decoration: InputDecoration(
-                    hintText: "",
-                    hintStyle: TextStyle(color: Colors.grey),
-                    filled: true,
-                    fillColor: Color(
-                      0xFFFCFCFC,
-                    ), // background color inside textfield
-                    contentPadding: EdgeInsets.symmetric(
-                      vertical: 14,
-                      horizontal: 20,
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: Colors.black12),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
-                        color: Color(0xFF1A2C54),
-                        width: 2,
-                      ),
-                    ),
-                  ),
-                  style: TextStyle(color: Colors.black), // typing te
-                ),
-              ),
-              ListTile(
-                title: Text(
-                  "Last Name",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-                subtitle: TextField(
-                  controller: lastnameController,
-                  decoration: InputDecoration(
-                    hintText: "",
-                    hintStyle: TextStyle(color: Colors.grey),
-                    filled: true,
-                    fillColor: Color(
-                      0xFFFCFCFC,
-                    ), // background color inside textfield
-                    contentPadding: EdgeInsets.symmetric(
-                      vertical: 14,
-                      horizontal: 20,
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: Colors.black12),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
-                        color: Color(0xFF1A2C54),
-                        width: 2,
-                      ),
-                    ),
-                  ),
-                  style: TextStyle(color: Colors.black), // typing te
-                ),
-              ),
-              ListTile(
-                title: Text(
-                  "First Name",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-                subtitle: TextField(
-                  controller: firstnameController,
-                  decoration: InputDecoration(
-                    hintText: "",
-                    hintStyle: TextStyle(color: Colors.grey),
-                    filled: true,
-                    fillColor: Color(
-                      0xFFFCFCFC,
-                    ), // background color inside textfield
-                    contentPadding: EdgeInsets.symmetric(
-                      vertical: 14,
-                      horizontal: 20,
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: Colors.black12),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
-                        color: Color(0xFF1A2C54),
-                        width: 2,
-                      ),
-                    ),
-                  ),
-                  style: TextStyle(color: Colors.black), // typing te
-                ),
-              ),
-              ListTile(
-                title: Text(
-                  "Middle Initial",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-                subtitle: TextField(
-                  controller: MIController,
-                  decoration: InputDecoration(
-                    hintText: "",
-                    hintStyle: TextStyle(color: Colors.grey),
-                    filled: true,
-                    fillColor: Color(
-                      0xFFFCFCFC,
-                    ), // background color inside textfield
-                    contentPadding: EdgeInsets.symmetric(
-                      vertical: 14,
-                      horizontal: 20,
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: Colors.black12),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
-                        color: Color(0xFF1A2C54),
-                        width: 2,
-                      ),
-                    ),
-                  ),
-                  style: TextStyle(color: Colors.black), // typing te
-                ),
-              ),
+              
               ListTile(
                 title: Text(
                   "Password",
@@ -353,6 +211,7 @@ class RegisterPageState extends State<RegisterPage> {
                 ),
                 subtitle: TextField(
                   controller: confirmPasswordController,
+                    obscureText: true,
                   decoration: InputDecoration(
                     hintText: "",
                     hintStyle: TextStyle(color: Colors.grey),
@@ -379,114 +238,7 @@ class RegisterPageState extends State<RegisterPage> {
                   style: TextStyle(color: Colors.black), // typing te
                 ),
               ),
-              ListTile(
-                title: Text(
-                  "Program",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-                subtitle: TextField(
-                  controller: programController,
-                  decoration: InputDecoration(
-                    hintText: "",
-                    hintStyle: TextStyle(color: Colors.grey),
-                    filled: true,
-                    fillColor: Color(
-                      0xFFFCFCFC,
-                    ), // background color inside textfield
-                    contentPadding: EdgeInsets.symmetric(
-                      vertical: 14,
-                      horizontal: 20,
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: Colors.black12),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
-                        color: Color(0xFF1A2C54),
-                        width: 2,
-                      ),
-                    ),
-                  ),
-                  style: TextStyle(color: Colors.black), // typing te
-                ),
-              ),
-              ListTile(
-                title: Text(
-                  "Year",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-                subtitle: TextField(
-                  controller: yearController,
-                  decoration: InputDecoration(
-                    hintText: "",
-                    hintStyle: TextStyle(color: Colors.grey),
-                    filled: true,
-                    fillColor: Color(
-                      0xFFFCFCFC,
-                    ), // background color inside textfield
-                    contentPadding: EdgeInsets.symmetric(
-                      vertical: 14,
-                      horizontal: 20,
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: Colors.black12),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
-                        color: Color(0xFF1A2C54),
-                        width: 2,
-                      ),
-                    ),
-                  ),
-                  style: TextStyle(color: Colors.black), // typing te
-                ),
-              ),
-              ListTile(
-                title: Text(
-                  "Section",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-                subtitle: TextField(
-                  controller: sectionController,
-                  decoration: InputDecoration(
-                    hintText: "",
-                    hintStyle: TextStyle(color: Colors.grey),
-                    filled: true,
-                    fillColor: Color(
-                      0xFFFCFCFC,
-                    ), // background color inside textfield
-                    contentPadding: EdgeInsets.symmetric(
-                      vertical: 14,
-                      horizontal: 20,
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(color: Colors.black12),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15),
-                      borderSide: BorderSide(
-                        color: Color(0xFF1A2C54),
-                        width: 2,
-                      ),
-                    ),
-                  ),
-                  style: TextStyle(color: Colors.black), // typing te
-                ),
-              ),
+              
               ListTile(
                 title: ElevatedButton(
                   style: ElevatedButton.styleFrom(
@@ -510,7 +262,7 @@ class RegisterPageState extends State<RegisterPage> {
                         context: context,
                         builder: (context) => AlertDialog(
                           title: Text("Warning"),
-                          content: Text("Student ID cannot be empty"),
+                          content: Text("Email cannot be empty"),
                           actions: [
                             TextButton(
                               onPressed: () => Navigator.pop(context),
@@ -537,9 +289,32 @@ class RegisterPageState extends State<RegisterPage> {
                       );
                       return;
                     }
+                    if (passwordController.text != confirmPasswordController.text) {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: Text("Warning"),
+                          content: Text("Passwords do not match"),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.pop(context),
+                              child: Text("OK"),
+                            ),
+                          ],
+                        ),
+                      );
+                      return;
+                    }
 
-                    await createUserInfo();
-                    await createUser();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => RegisterPagePt2(
+                          email: emailController.text.trim(),
+                          password: passwordController.text.trim(),
+                        ),
+                      ),
+                    );
                   },
                   child: Text("Register"),
                 ),

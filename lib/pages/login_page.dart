@@ -74,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
 
                   ListTile(
                     title: Text(
-                      "Username/StudentID",
+                      "Email",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
@@ -83,7 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                     subtitle: TextField(
                       controller: emailController,
                       decoration: InputDecoration(
-                        hintText: 'B2023-00290',
+                        hintText: 'dummy@gmail.com',
                         hintStyle: TextStyle(color: Colors.grey),
                         filled: true,
                         fillColor: Color(
@@ -111,7 +111,7 @@ class _LoginPageState extends State<LoginPage> {
 
                   ListTile(
                     title: Text(
-                      "PassWord",
+                      "Password",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
@@ -190,16 +190,15 @@ class _LoginPageState extends State<LoginPage> {
                                 decoration: TextDecoration.underline,
                                 fontWeight: FontWeight.bold,
                               ),
-                              recognizer:
-                                  TapGestureRecognizer()
-                                    ..onTap = () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => RegisterPage(),
-                                        ),
-                                      );
-                                    },
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => RegisterPage(),
+                                    ),
+                                  );
+                                },
                             ),
                           ],
                         ),
@@ -211,6 +210,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
 
+          // Admin Login Button
           Positioned(
             bottom: 20,
             right: 20,
@@ -225,7 +225,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               onPressed: () {
-                Navigator.pushNamed(context, '/admin_page');
+                Navigator.pushNamed(context, '/admin_login_page'); // Fixed navigation
               },
               child: Icon(Icons.admin_panel_settings, size: 24),
             ),

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class EventInfoPage extends StatelessWidget {
-  const EventInfoPage({super.key});
+  final bool isAdmin;
+
+  const EventInfoPage({super.key, required this.isAdmin});
 
   @override
   Widget build(BuildContext context) {
@@ -119,25 +121,47 @@ class EventInfoPage extends StatelessWidget {
                         ),
                         SizedBox(height: 20),
 
-                        // Register Button
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xFF0A1D34),
-                            foregroundColor: Colors.white,
-                            padding: EdgeInsets.symmetric(vertical: 12),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
+                        // Admin-specific "View Participants" button
+                        if (isAdmin)
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Color(0xFF0A1D34),
+                              foregroundColor: Colors.white,
+                              padding: EdgeInsets.symmetric(vertical: 12),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              textStyle: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                            textStyle: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/participants_page');
+                            },
+                            child: Center(child: Text("View Participants")),
                           ),
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/receipt_page');
-                          },
-                          child: Center(child: Text("Register for Event")),
-                        ),
+
+                        // User-specific "Register for Event" button
+                        if (!isAdmin)
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Color(0xFF0A1D34),
+                              foregroundColor: Colors.white,
+                              padding: EdgeInsets.symmetric(vertical: 12),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              textStyle: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/receipt_page');
+                            },
+                            child: Center(child: Text("Register for Event")),
+                          ),
                       ],
                     ),
                   ),

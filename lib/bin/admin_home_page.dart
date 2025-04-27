@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  final bool isAdmin;
-
-  const HomePage({super.key, required this.isAdmin});
+class AdminHomePage extends StatelessWidget {
+  const AdminHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,31 +27,30 @@ class HomePage extends StatelessWidget {
                 ),
               ),
 
-              // Admin-specific "Add Event" button
-              if (isAdmin)
-                ListTile(
-                  title: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFF1A2C54),
-                        foregroundColor: Colors.white,
-                        padding: EdgeInsets.symmetric(vertical: 12),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        textStyle: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
+              // Add Event Button
+              ListTile(
+                title: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFF1A2C54),
+                      foregroundColor: Colors.white,
+                      padding: EdgeInsets.symmetric(vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
                       ),
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/admin_edit_event_page');
-                      },
-                      child: Text("Add Event"),
+                      textStyle: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/admin_edit_event_page');
+                    },
+                    child: Text("Add Event"),
                   ),
                 ),
+              ),
 
               // Search bar
               ListTile(
