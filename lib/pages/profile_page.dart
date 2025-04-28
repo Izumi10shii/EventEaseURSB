@@ -18,8 +18,8 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue,
-      body: FutureBuilder<Map<String, dynamic>?>(
+      backgroundColor: Color(0xFFF1F5FB),  // Light background color
+      body: FutureBuilder<Map<String, dynamic>?>(  // Fetch user data
         future: fetchUserData(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -30,25 +30,30 @@ class ProfilePage extends StatelessWidget {
           }
 
           final userData = snapshot.data!;
+          final interests = userData['interests'] ?? [];  // Fetch interests from Firestore
+
           return Center(
             child: ListView(
+              padding: EdgeInsets.symmetric(horizontal: 20),
               children: [
+                SizedBox(height: 40,),
                 ListTile(
                   title: Align(
                     alignment: Alignment.center,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: 300,
-                          width: 300,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(999),
-                            color: Colors.grey,
+                    child: Container(
+                      height: 250,
+                      width: 250,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.grey[300],
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            blurRadius: 10,
+                            spreadRadius: 1,
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -61,9 +66,9 @@ class ProfilePage extends StatelessWidget {
                         Text(
                           "@${userData['username']}",
                           style: TextStyle(
-                            fontSize: 40,
+                            fontSize: 32,
                             fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                            color: Colors.black87,
                           ),
                         ),
                         SizedBox(width: 20),
@@ -76,9 +81,8 @@ class ProfilePage extends StatelessWidget {
                           },
                           style: ElevatedButton.styleFrom(
                             minimumSize: Size(40, 40),
-                            backgroundColor: Colors.white,
-                            foregroundColor: Colors.black,
-                            padding: EdgeInsets.symmetric(horizontal: 0, vertical: 10),
+                            backgroundColor: Colors.blueAccent,
+                            foregroundColor: Colors.white,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
                             ),
@@ -90,228 +94,28 @@ class ProfilePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                ListTile(
-                  title: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(40),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 10,
-                            horizontal: 20,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Color(0xFF1A2C54),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(20),
-                              topRight: Radius.circular(0),
-                              bottomLeft: Radius.circular(20),
-                              bottomRight: Radius.circular(40),
-                            ),
-                          ),
-                          child: Text(
-                            "Full Name",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 40),
-                        Text("${userData['firstname']} ${userData['MI']} ${userData['lastname']}"),
-                        SizedBox(width: 40),
-                      ],
-                    ),
-                  ),
-                ),
-                ListTile(
-                  title: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(40),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 10,
-                            horizontal: 20,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Color(0xFF1A2C54),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(20),
-                              topRight: Radius.circular(0),
-                              bottomLeft: Radius.circular(20),
-                              bottomRight: Radius.circular(40),
-                            ),
-                          ),
-                          child: Text(
-                            "Program",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 40),
-                        Text("${userData['program']}"),
-                        SizedBox(width: 40),
-                      ],
-                    ),
-                  ),
-                ),
-                ListTile(
-                  title: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(40),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 10,
-                            horizontal: 20,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Color(0xFF1A2C54),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(20),
-                              topRight: Radius.circular(0),
-                              bottomLeft: Radius.circular(20),
-                              bottomRight: Radius.circular(40),
-                            ),
-                          ),
-                          child: Text(
-                            "Section",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 40),
-                        Text("${userData['section']}"),
-                        SizedBox(width: 40),
-                      ],
-                    ),
-                  ),
-                ),
-                ListTile(
-                  title: Container(
-                    padding: EdgeInsets.all(0),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(22),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 10,
-                            horizontal: 40,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Color(0xFF1A2C54),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(22),
-                              topRight: Radius.circular(0),
-                              bottomLeft: Radius.circular(0),
-                              bottomRight: Radius.circular(60),
-                            ),
-                          ),
-                          child: Text(
-                            "Interest",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("Ethanol"),
-                              Text("Ikimandians"),
-                              Text("Marilag"),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                ListTile(
-                  title: Container(
-                    padding: EdgeInsets.all(0),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(22),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 10,
-                            horizontal: 40,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Color(0xFF1A2C54),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(22),
-                              topRight: Radius.circular(0),
-                              bottomLeft: Radius.circular(0),
-                              bottomRight: Radius.circular(60),
-                            ),
-                          ),
-                          child: Text(
-                            "Recent Activities",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(20),
-                          child: Text(
-                            "03/25/2025 | Attended URS Binangonan College Week: March...",
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                _buildBlueSection("Full Name", "${userData['firstname']} ${userData['MI']} ${userData['lastname']}"),
+                _buildBlueSection("Program", "${userData['program']}"),
+                _buildBlueSection("Section", "${userData['section']}"),
+                _buildInterestSection(interests),
+                _buildRecentActivitiesSection(),
                 ListTile(
                   title: ElevatedButton(
                     onPressed: () {
                       Navigator.pushNamed(context, '/edit_profile_page');
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF1A2C54),
+                      backgroundColor: Colors.blueAccent,
                       foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                       elevation: 5,
+                      padding: EdgeInsets.symmetric(vertical: 15),
                     ),
                     child: Text(
                       "Edit Profile",
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
@@ -319,6 +123,155 @@ class ProfilePage extends StatelessWidget {
             ),
           );
         },
+      ),
+    );
+  }
+
+  Widget _buildBlueSection(String title, String content) {
+    return ListTile(
+      title: Container(
+        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20), // Added slight padding inside the container
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(0),  // Sharp top-right corner
+            bottomLeft: Radius.circular(20),
+            bottomRight: Radius.circular(30),  // Curve bottom-right corner
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 8,
+              spreadRadius: 1,
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              decoration: BoxDecoration(
+                color: Colors.blueAccent,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(0),  // Sharp top-right corner
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(30),  // Curve bottom-right corner
+                ),
+              ),
+              child: Text(
+                title,
+                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+            ),
+            SizedBox(width: 20),
+            Expanded(
+              child: Text(
+                content,
+                style: TextStyle(color: Colors.black87, fontSize: 16),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildInterestSection(List<dynamic> interests) {
+    return ListTile(
+      title: Container(
+        padding: EdgeInsets.all(0),
+        margin: EdgeInsets.symmetric(vertical: 10),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(22),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 8,
+              spreadRadius: 1,
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+              decoration: BoxDecoration(
+                color: Colors.blueAccent,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(22),
+                  topRight: Radius.circular(0),  // Sharp top-right corner
+                  bottomLeft: Radius.circular(0),
+                  bottomRight: Radius.circular(60),
+                ),
+              ),
+              child: Text(
+                "Interests",
+                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: interests.isEmpty
+                    ? [Text("No interests added yet", style: TextStyle(color: Colors.black54))]
+                    : interests.map<Widget>((interest) => Text(interest, style: TextStyle(color: Colors.black87))).toList(),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildRecentActivitiesSection() {
+    return ListTile(
+      title: Container(
+        padding: EdgeInsets.all(0),
+        margin: EdgeInsets.symmetric(vertical: 10),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(22),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 8,
+              spreadRadius: 1,
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+              decoration: BoxDecoration(
+                color: Colors.blueAccent,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(22),
+                  topRight: Radius.circular(0),  // Sharp top-right corner
+                  bottomLeft: Radius.circular(0),
+                  bottomRight: Radius.circular(60),
+                ),
+              ),
+              child: Text(
+                "Recent Activities",
+                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(20),
+              child: Text(
+                "03/25/2025 | Attended URS Binangonan College Week: March...",
+                style: TextStyle(color: Colors.black87),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
