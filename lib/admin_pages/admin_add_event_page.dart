@@ -37,7 +37,7 @@ class _AdminAddEventPageState extends State<AdminAddEventPage> {
       );
     }
   }
-  */
+*/
 
   Future<void> _pickDateTime() async {
     final DateTime? pickedDate = await showDatePicker(
@@ -70,13 +70,14 @@ class _AdminAddEventPageState extends State<AdminAddEventPage> {
   }
 
   Future<void> _uploadEvent() async {
-    if (_selectedImage == null ||
+    if (
+        // _selectedImage == null ||   // Commented out image validation
         _eventNameController.text.isEmpty ||
         _eventDateController.text.isEmpty ||
         _eventDescriptionController.text.isEmpty ||
         _organizerNameController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Please fill in all fields and select an image.")),
+        SnackBar(content: Text("Please fill in all fields.")), // Updated text too
       );
       return;
     }
@@ -86,17 +87,18 @@ class _AdminAddEventPageState extends State<AdminAddEventPage> {
     });
 
     try {
-      // Convert image to base64
+      /*
       final bytes = await _selectedImage!.readAsBytes();
       final base64Image = base64Encode(bytes);
+      */
 
-      // Save event details and image to Firestore
-      await FirebaseFirestore.instance.collection('events').add({
+      // Updated collection name to 'event_info'
+      await FirebaseFirestore.instance.collection('event_info').add({
         'name': _eventNameController.text.trim(),
         'date': _eventDateController.text.trim(),
         'description': _eventDescriptionController.text.trim(),
         'organizer': _organizerNameController.text.trim(),
-        'imageBase64': base64Image,
+        //'imageBase64': base64Image, // Image not added yet
         'createdAt': FieldValue.serverTimestamp(),
       });
 
@@ -129,11 +131,11 @@ class _AdminAddEventPageState extends State<AdminAddEventPage> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: ListView(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+          padding: EdgeInsets.all(20),
           children: [
             // Event Image Section
             GestureDetector(
-              //onTap: _pickImage,
+              //onTap: _pickImage, // Commented out tap
               child: Container(
                 width: double.infinity,
                 height: 200,
@@ -167,63 +169,53 @@ class _AdminAddEventPageState extends State<AdminAddEventPage> {
               ),
             ),
 
-            SizedBox(height: 20),
+            SizedBox(height: 24),
 
             // Event Name Field
             _buildTextField("Event Name", controller: _eventNameController),
 
-            SizedBox(height: 20),
+            SizedBox(height: 16),
 
             // Organizer Name Field
             _buildTextField("Organizer Name", controller: _organizerNameController),
 
-            SizedBox(height: 20),
+            SizedBox(height: 16),
 
-            // Set Date Field
-            ListTile(
-              title: TextField(
-                controller: _eventDateController,
-                readOnly: true,
-                decoration: InputDecoration(
-                  labelText: "Set Date and Time",
-                  filled: true,
-                  fillColor: Color(0xFFEFEFEF),
-                  contentPadding: EdgeInsets.symmetric(vertical: 14, horizontal: 16),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide(color: Colors.black12),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide(color: Color(0xFF1A2C54), width: 2),
-                  ),
-                ),
-                onTap: _pickDateTime,
-              ),
+            // Date Field with consistent style
+            TextField(
+              controller: _eventDateController,
+              readOnly: true,
+              decoration: _getInputDecoration("Set Date and Time"),
+              onTap: _pickDateTime,
             ),
 
-            SizedBox(height: 20),
+            SizedBox(height: 16),
 
             // Event Description Field
-            _buildTextField("Event Description", controller: _eventDescriptionController, maxLines: 5),
+            _buildTextField("Event Description", 
+              controller: _eventDescriptionController, 
+              maxLines: 5
+            ),
 
-            SizedBox(height: 20),
+            SizedBox(height: 24),
 
             // Add Event Button
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF0A1D34),
-                foregroundColor: Colors.white,
-                padding: EdgeInsets.symmetric(vertical: 12),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
+            SizedBox(
+              width: double.infinity,
+              height: 50,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFF0A1D34),
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
                 ),
-                textStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                onPressed: _isUploading ? null : _uploadEvent,
+                child: _isUploading
+                    ? CircularProgressIndicator(color: Colors.white)
+                    : Text("Add Event", style: TextStyle(fontSize: 18)),
               ),
-              onPressed: _isUploading ? null : _uploadEvent,
-              child: _isUploading
-                  ? CircularProgressIndicator(color: Colors.white)
-                  : Text("Add Event"),
             ),
           ],
         ),
@@ -231,24 +223,38 @@ class _AdminAddEventPageState extends State<AdminAddEventPage> {
     );
   }
 
-  // Helper method to build text fields
+  // Updated helper method for consistent text field styling
   Widget _buildTextField(String label, {TextEditingController? controller, int maxLines = 1}) {
     return TextField(
       controller: controller,
       maxLines: maxLines,
-      decoration: InputDecoration(
-        labelText: label,
-        filled: true,
-        fillColor: Color(0xFFEFEFEF),
-        contentPadding: EdgeInsets.symmetric(vertical: 14, horizontal: 16),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15),
-          borderSide: BorderSide(color: Colors.black12),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15),
-          borderSide: BorderSide(color: Color(0xFF1A2C54), width: 2),
-        ),
+      decoration: _getInputDecoration(label),
+    );
+  }
+
+  // New method for consistent input decoration
+  InputDecoration _getInputDecoration(String label) {
+    return InputDecoration(
+      labelText: label,
+      labelStyle: TextStyle(color: Color(0xFF1A2C54)),
+      filled: true,
+      fillColor: Color(0xFFEFEFEF),
+      contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(15),
+        borderSide: BorderSide(color: Colors.black12),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(15),
+        borderSide: BorderSide(color: Color(0xFF1A2C54), width: 2),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(15),
+        borderSide: BorderSide(color: Colors.red),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(15),
+        borderSide: BorderSide(color: Colors.red, width: 2),
       ),
     );
   }
