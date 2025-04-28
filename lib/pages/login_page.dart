@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -27,17 +28,32 @@ class _LoginPageState extends State<LoginPage> {
     try {
       final userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(
-            email: emailController.text.trim(),
-            password: passwordController.text.trim(),
-          );
-      print(userCredential);
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
 
-      if (userCredential.user != null) {
-        Navigator.pushReplacementNamed(
-          context,
-          '/nav_page',
-        ); // Replace with your home page route
+      // Check if the user is an admin in Firestore
+      final userDoc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userCredential.user?.uid)
+          .get();
+
+      if (userDoc.exists) {
+        final isAdmin = userDoc.data()?['role'] == 'admin';
+        if (isAdmin) {
+          // Show error if an admin tries to log in from the normal login page
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("Admins must log in from the Admin Login page.")),
+          );
+          return;
+        }
       }
+
+      // Navigate to the NavPage for normal users
+      Navigator.pushReplacementNamed(
+        context,
+        '/nav_page',
+      );
     } on FirebaseAuthException catch (e) {
       // Show an error message if login fails
       ScaffoldMessenger.of(
@@ -235,3 +251,4 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
+

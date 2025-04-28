@@ -5,7 +5,9 @@ import 'package:flutter_event_ease/pages/profile_page.dart';
 import 'package:flutter_event_ease/pages/reminders_page.dart';
 
 class NavPage extends StatefulWidget {
-  const NavPage({super.key});
+  final bool isAdmin;
+
+  const NavPage({super.key, required this.isAdmin});
 
   @override
   State<NavPage> createState() => _NavPageState();
@@ -14,18 +16,25 @@ class NavPage extends StatefulWidget {
 class _NavPageState extends State<NavPage> {
   int _selectedIndex = 0;
 
-  void _navigateBottomBar(int index) {
+  late final List<Widget> _pages;
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize pages with the correct isAdmin value for HomePage
+    _pages = [
+      HomePage(isAdmin: widget.isAdmin),
+      CalendarPage(),
+      RemindersPage(),
+      ProfilePage(),
+    ];
+  }
+
+  void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
-
-  final List _pages = [
-    HomePage(isAdmin: false), // Pass the required isAdmin parameter
-    CalendarPage(),
-    RemindersPage(),
-    ProfilePage(),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +44,9 @@ class _NavPageState extends State<NavPage> {
         clipBehavior: Clip.none,
         children: [
           Container(
-            height: 65, // Reduced height for the navigation bar
+            height: 65,
             decoration: BoxDecoration(
-              color: Colors.transparent, // Removed extra white background
+              color: Colors.white,
               boxShadow: [
                 BoxShadow(
                   color: Colors.black12,
@@ -53,10 +62,10 @@ class _NavPageState extends State<NavPage> {
             child: BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
               currentIndex: _selectedIndex,
-              onTap: _navigateBottomBar,
+              onTap: _onItemTapped,
               selectedItemColor: Colors.white,
               unselectedItemColor: Colors.grey,
-              backgroundColor: Colors.white, // Retained white color for the bar
+              backgroundColor: Colors.transparent,
               showSelectedLabels: false,
               showUnselectedLabels: false,
               elevation: 0,
@@ -81,9 +90,9 @@ class _NavPageState extends State<NavPage> {
             ),
           ),
           AnimatedPositioned(
-            duration: Duration(milliseconds: 300), // Animation duration
-            curve: Curves.easeInOut, // Smooth animation curve
-            top: -15, // Lowered the floating item closer to the bar
+            duration: Duration(milliseconds: 300),
+            curve: Curves.easeInOut,
+            top: -15,
             left: MediaQuery.of(context).size.width / 4 * _selectedIndex + 20,
             child: _buildFloatingNavItem(),
           ),
@@ -119,11 +128,11 @@ class _NavPageState extends State<NavPage> {
     }
 
     return Container(
-      height: 60, // Box shape with equal height and width
+      height: 60, // Floating item size
       width: 60,
       decoration: BoxDecoration(
         color: Color(0xFF1A2C54),
-        borderRadius: BorderRadius.circular(12), // Rounded corners for the box
+        borderRadius: BorderRadius.circular(12), // Rounded corners
         boxShadow: [
           BoxShadow(
             color: Colors.black26,

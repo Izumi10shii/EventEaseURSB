@@ -1,8 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter_event_ease/pages/home_page.dart';
+import 'package:flutter_event_ease/pages/nav_page.dart';
 
 class AdminLoginPage extends StatefulWidget {
   const AdminLoginPage({super.key});
@@ -32,50 +31,41 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
 
       if (userDoc.exists) {
         final isAdmin = userDoc.data()?['role'] == 'admin';
-        print("User data: ${userDoc.data()}"); // Debug print
-        print("isAdmin: $isAdmin"); // Debug print
-
         if (isAdmin) {
-          // Navigate to the HomePage with isAdmin set to true
+          // Navigate to the NavPage with isAdmin set to true
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => HomePage(isAdmin: true)),
+            MaterialPageRoute(builder: (context) => NavPage(isAdmin: true)),
           );
         } else {
-          // Show error if the user is not an admin
-          showDialog(
-            context: context,
-            builder: (context) => AlertDialog(
-              title: Text("Access Denied"),
-              content: Text("You do not have admin privileges."),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(context),
-                  child: Text("OK"),
-                ),
-              ],
-            ),
+          // Navigate to the NavPage with isAdmin set to false
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => NavPage(isAdmin: false)),
           );
         }
       } else {
-        print("User document does not exist.");
+        _showErrorDialog("Error", "User document does not exist.");
       }
     } on FirebaseAuthException catch (e) {
-      // Handle authentication errors
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text("Login Failed"),
-          content: Text(e.message ?? "An error occurred. Please try again."),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: Text("OK"),
-            ),
-          ],
-        ),
-      );
+      _showErrorDialog("Login Failed", e.message ?? "An error occurred. Please try again.");
     }
+  }
+
+  void _showErrorDialog(String title, String message) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(title),
+        content: Text(message),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text("OK"),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -88,7 +78,7 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
             child: Padding(
               padding: EdgeInsets.all(25),
               child: Form(
-                key: _formKey, // Attach the form key here
+                key: _formKey,
                 child: ListView(
                   shrinkWrap: true,
                   children: [
@@ -209,7 +199,6 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                             if (_formKey.currentState?.validate() ?? false) {
                               loginAsAdmin();
                             } else {
-                              // Show a message if validation fails
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(content: Text("Please fill in all fields correctly.")),
                               );
@@ -219,55 +208,9 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                         ),
                       ),
                     ),
-                    ListTile(
-                      title: Align(
-                        alignment: Alignment.center,
-                        child: Text.rich(
-                          TextSpan(
-                            text: "Are you a new admin? ",
-                            style: TextStyle(color: Colors.black),
-                            children: [
-                              TextSpan(
-                                text: "Register Now!",
-                                style: TextStyle(
-                                  color: Colors.blue,
-                                  decoration: TextDecoration.underline,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () {
-                                    Navigator.pushNamed(context, '/admin_register_page'); //would not work
-                                  },
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
                   ],
                 ),
               ),
-            ),
-          ),
-
-          // User Login Button
-          Positioned(
-            bottom: 20,
-            right: 20,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF0A1D34),
-                foregroundColor: Colors.white,
-                padding: EdgeInsets.zero,
-                minimumSize: Size(48, 48),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, '/nav_page');
-              },
-              child: Icon(Icons.person, size: 24),
             ),
           ),
         ],

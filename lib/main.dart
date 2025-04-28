@@ -12,6 +12,7 @@ import 'package:flutter_event_ease/pages/CCS_events_page.dart';
 import 'package:flutter_event_ease/pages/COA_events_page.dart';
 import 'package:flutter_event_ease/pages/COB_events_page.dart';
 import 'package:flutter_event_ease/admin_pages/admin_login_page.dart';
+import 'package:flutter_event_ease/admin_pages/admin_add_event_page.dart';
 import 'package:flutter_event_ease/pages/edit_event_page.dart'; // Merged file
 
 // Admin-specific imports removed since they are now merged into shared files
@@ -30,6 +31,7 @@ void main() async {
   );
 
   db = FirebaseFirestore.instance;
+/*
 
   final user = <String, dynamic>{
     "first": "John",
@@ -39,7 +41,7 @@ void main() async {
 
   db.collection("users").add(user).then((DocumentReference doc) =>
       print('DocumentSnapshot added with ID: ${doc.id}'));
-
+*/
   runApp(const MyApp());
 }
 
@@ -56,8 +58,9 @@ class MyApp extends StatelessWidget {
         '/register_page': (context) => RegisterPage(),
         '/login_page': (context) => LoginPage(),
         '/admin_login_page': (context) => AdminLoginPage(),
+        '/admin_add_event_page': (context) => AdminAddEventPage(),
         '/index_page': (context) => IndexPage(),
-        '/nav_page': (context) => NavPage(),
+        '/nav_page': (context) => NavPage(isAdmin: false),
         '/home_page': (context) => HomePage(isAdmin: false), // Pass isAdmin parameter
         '/event_info_page': (context) => EventInfoPage(isAdmin: false), // Merged file
         '/receipt_page': (context) => ReceiptPage(),
