@@ -1,5 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 
 class EventInfoPage extends StatelessWidget {
@@ -29,13 +29,12 @@ class EventInfoPage extends StatelessWidget {
 
           return Container(
             decoration: BoxDecoration(
-              color: Color(0xFF1A2C54), // Full-screen blue background
+              color: Color(0xFF1A2C54),
             ),
             child: SafeArea(
               child: ListView(
                 padding: EdgeInsets.all(16),
                 children: [
-                  // Event Image
                   Container(
                     height: 200,
                     width: double.infinity,
@@ -50,17 +49,14 @@ class EventInfoPage extends StatelessWidget {
                           : null,
                     ),
                   ),
-
                   SizedBox(height: 20),
-
-                  // Event Info
                   Padding(
                     padding: EdgeInsets.all(20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          event['Event Name'] ?? "Event Title",
+                          event['name'] ?? "Event Title",
                           style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
@@ -69,9 +65,9 @@ class EventInfoPage extends StatelessWidget {
                         ),
                         SizedBox(height: 10),
                         Text(
-                          event['Date & Time'] != null
+                          event['date'] != null
                               ? DateFormat('MMM dd, yyyy - hh:mm a').format(
-                                  (event['Date & Time'] as Timestamp).toDate(),
+                                  DateTime.parse(event['date'] as String),
                                 )
                               : "Date & Time",
                           style: TextStyle(
@@ -80,88 +76,18 @@ class EventInfoPage extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 20),
-                        Text(
-                          "Organized by:",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                        Text(
-                          event['Organizers Name'] ?? "Organization name",
-                          style: TextStyle(color: Colors.white70),
-                        ),
+                        Text("Organized by:", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+                        Text(event['organizer'] ?? "Organization name", style: TextStyle(color: Colors.white70)),
                         SizedBox(height: 20),
-                        Text(
-                          "Participants",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                        ...((event['Participants'] as List<dynamic>?) ?? [])
-                            .map((participant) => Text(
-                                  participant,
-                                  style: TextStyle(color: Colors.white70),
-                                ))
+                        Text("Participants", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+                        ...((event['participants'] as List<dynamic>?) ?? [])
+                            .map((participant) => Text(participant, style: TextStyle(color: Colors.white70)))
                             .toList(),
                         SizedBox(height: 20),
-                        Text(
-                          "Event Details",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
+                        Text("Event Details", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
                         SizedBox(height: 10),
-                        Text(
-                          event['Event Description'] ?? "No details available",
-                          style: TextStyle(color: Colors.white70),
-                        ),
+                        Text(event['description'] ?? "No details available", style: TextStyle(color: Colors.white70)),
                         SizedBox(height: 20),
-
-                        // Admin-specific "View Participants" button
-                        if (isAdmin)
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xFF0A1D34),
-                              foregroundColor: Colors.white,
-                              padding: EdgeInsets.symmetric(vertical: 12),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              textStyle: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            onPressed: () {
-                              Navigator.pushNamed(context, '/participants_page');
-                            },
-                            child: Center(child: Text("View Participants")),
-                          ),
-
-                        // User-specific "Register for Event" button
-                        if (!isAdmin)
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xFF0A1D34),
-                              foregroundColor: Colors.white,
-                              padding: EdgeInsets.symmetric(vertical: 12),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              textStyle: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            onPressed: () {
-                              Navigator.pushNamed(context, '/receipt_page');
-                            },
-                            child: Center(child: Text("Register for Event")),
-                          ),
                       ],
                     ),
                   ),

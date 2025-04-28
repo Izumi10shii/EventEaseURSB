@@ -11,7 +11,6 @@ import 'package:flutter_event_ease/pages/nav_page.dart';
 import 'package:flutter_event_ease/pages/CCS_events_page.dart';
 import 'package:flutter_event_ease/pages/COA_events_page.dart';
 import 'package:flutter_event_ease/pages/COB_events_page.dart';
-import 'package:flutter_event_ease/admin_pages/admin_login_page.dart';
 import 'package:flutter_event_ease/admin_pages/admin_add_event_page.dart';
 import 'package:flutter_event_ease/pages/edit_event_page.dart'; // Merged file
 
@@ -55,6 +54,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
+    '/event_info': (context) => EventInfoPage(isAdmin: false),
         '/register_page': (context) => RegisterPage(),
         '/login_page': (context) => LoginPage(),
         '/admin_login_page': (context) => AdminLoginPage(),

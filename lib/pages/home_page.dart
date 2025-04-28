@@ -11,7 +11,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // TextEditingController for search input
   final TextEditingController _searchController = TextEditingController();
   String _searchQuery = '';
 
@@ -124,92 +123,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            // Department buttons (kept as is)
-            ListTile(
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.purple,
-                      foregroundColor: Colors.white,
-                      elevation: 8,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        side: BorderSide(color: Colors.white, width: 2),
-                      ),
-                      textStyle: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/COA_events_page');
-                    },
-                    child: Text("COA"),
-                  ),
-                  SizedBox(width: 10),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
-                      foregroundColor: Colors.white,
-                      elevation: 8,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        side: BorderSide(color: Colors.white, width: 2),
-                      ),
-                      textStyle: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/COB_events_page');
-                    },
-                    child: Text("COB"),
-                  ),
-                  SizedBox(width: 10),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
-                      foregroundColor: Colors.white,
-                      elevation: 8,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        side: BorderSide(color: Colors.white, width: 2),
-                      ),
-                      textStyle: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/CCS_events_page');
-                    },
-                    child: Text("CCS"),
-                  ),
-                ],
-              ),
-            ),
-
-            // Upcoming Events title
-            ListTile(
-              title: Padding(
-                padding: EdgeInsets.only(left: 20, top: 30),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Upcoming Events",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 24,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-
-            // Event cards (shared for both admin and users)
+            // Event cards
             StreamBuilder<QuerySnapshot>(
               stream: FirebaseFirestore.instance
                   .collection('event_info')
@@ -246,36 +160,47 @@ class _HomePageState extends State<HomePage> {
                 return Column(
                   children: filteredEvents.map((doc) {
                     final data = doc.data() as Map<String, dynamic>;
+                    final eventId = doc.id;
 
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        elevation: 5,
-                        child: ListTile(
-                          leading: Container(
-                            width: 60,
-                            height: 60,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.grey[300],
-                            ),
-                            child: Icon(Icons.image, size: 40, color: Colors.white), // Placeholder image
+                      child: GestureDetector(
+                        onTap: () {
+                          // Navigate to EventInfoPage and pass eventId
+                          Navigator.pushNamed(
+                            context,
+                            '/event_info_page',
+                            arguments: eventId,  // Pass the eventId here
+                          );
+                        },
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
                           ),
-                          title: Text(
-                            data['name'] ?? 'Event Name',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
+                          elevation: 5,
+                          child: ListTile(
+                            leading: Container(
+                              width: 60,
+                              height: 60,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.grey[300],
+                              ),
+                              child: Icon(Icons.image, size: 40, color: Colors.white),
                             ),
-                          ),
-                          subtitle: Text(
-                            data['date'] ?? 'Event Date & Time',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.grey[600],
+                            title: Text(
+                              data['name'] ?? 'Event Name',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
+                            ),
+                            subtitle: Text(
+                              data['date'] ?? 'Event Date & Time',
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.grey[600],
+                              ),
                             ),
                           ),
                         ),
