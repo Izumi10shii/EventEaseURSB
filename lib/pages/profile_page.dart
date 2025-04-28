@@ -34,15 +34,14 @@ class ProfilePage extends StatelessWidget {
 
           return Center(
             child: ListView(
-              padding: EdgeInsets.symmetric(horizontal: 20),
               children: [
                 SizedBox(height: 40,),
                 ListTile(
                   title: Align(
                     alignment: Alignment.center,
                     child: Container(
-                      height: 250,
-                      width: 250,
+                      height: 300,
+                      width: 300,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.grey[300],
@@ -81,7 +80,7 @@ class ProfilePage extends StatelessWidget {
                           },
                           style: ElevatedButton.styleFrom(
                             minimumSize: Size(40, 40),
-                            backgroundColor: Colors.blueAccent,
+                            backgroundColor: Color(0xFF1A2C54),
                             foregroundColor: Colors.white,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
@@ -105,13 +104,13 @@ class ProfilePage extends StatelessWidget {
                       Navigator.pushNamed(context, '/edit_profile_page');
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blueAccent,
+                      backgroundColor: Color(0xFF1A2C54),
                       foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                       elevation: 5,
-                      padding: EdgeInsets.symmetric(vertical: 15),
+                      padding: EdgeInsets.symmetric(vertical: 10),
                     ),
                     child: Text(
                       "Edit Profile",
@@ -130,13 +129,13 @@ class ProfilePage extends StatelessWidget {
   Widget _buildBlueSection(String title, String content) {
     return ListTile(
       title: Container(
-        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20), // Added slight padding inside the container
+        padding: EdgeInsets.symmetric(vertical: 0, horizontal: 0), // Added slight padding inside the container
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(0),  // Sharp top-right corner
-            bottomLeft: Radius.circular(20),
+            topLeft: Radius.circular(30),
+            topRight: Radius.circular(30),  // Sharp top-right corner
+            bottomLeft: Radius.circular(30),
             bottomRight: Radius.circular(30),  // Curve bottom-right corner
           ),
           boxShadow: [
@@ -152,12 +151,12 @@ class ProfilePage extends StatelessWidget {
             Container(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               decoration: BoxDecoration(
-                color: Colors.blueAccent,
+                color: Color(0xFF1A2C54),
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20),
+                  topLeft: Radius.circular(50),
                   topRight: Radius.circular(0),  // Sharp top-right corner
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(30),  // Curve bottom-right corner
+                  bottomLeft: Radius.circular(50),
+                  bottomRight: Radius.circular(100),  // Curve bottom-right corner
                 ),
               ),
               child: Text(
@@ -182,7 +181,6 @@ class ProfilePage extends StatelessWidget {
     return ListTile(
       title: Container(
         padding: EdgeInsets.all(0),
-        margin: EdgeInsets.symmetric(vertical: 10),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(22),
@@ -200,7 +198,7 @@ class ProfilePage extends StatelessWidget {
             Container(
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
               decoration: BoxDecoration(
-                color: Colors.blueAccent,
+                color: Color(0xFF1A2C54),
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(22),
                   topRight: Radius.circular(0),  // Sharp top-right corner
@@ -250,7 +248,7 @@ class ProfilePage extends StatelessWidget {
             Container(
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
               decoration: BoxDecoration(
-                color: Colors.blueAccent,
+                color: Color(0xFF1A2C54),
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(22),
                   topRight: Radius.circular(0),  // Sharp top-right corner

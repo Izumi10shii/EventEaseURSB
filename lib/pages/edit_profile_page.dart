@@ -16,17 +16,22 @@ class _EditProfilePageState extends State<EditProfilePage> {
   final TextEditingController _programController = TextEditingController();
   final TextEditingController _sectionController = TextEditingController();
   final TextEditingController _firstNameController = TextEditingController();
-  final TextEditingController _middleInitialController = TextEditingController();
+  final TextEditingController _middleInitialController =
+      TextEditingController();
   final TextEditingController _lastNameController = TextEditingController();
   final TextEditingController _interestController = TextEditingController();
 
   List<String> _interests = [];
-  
+
   // Fetch user data
   Future<void> fetchUserData() async {
     final user = FirebaseAuth.instance.currentUser;
     if (user != null) {
-      final doc = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
+      final doc =
+          await FirebaseFirestore.instance
+              .collection('users')
+              .doc(user.uid)
+              .get();
       final data = doc.data();
       if (data != null) {
         setState(() {
@@ -57,13 +62,19 @@ class _EditProfilePageState extends State<EditProfilePage> {
         'program': _programController.text,
         'section': _sectionController.text,
         'firstname': _firstNameController.text,
-        'MI': _middleInitialController.text,  // Save the MI
+        'MI': _middleInitialController.text, // Save the MI
         'lastname': _lastNameController.text,
         'interests': _interests,
       };
 
-      await FirebaseFirestore.instance.collection('users').doc(user.uid).update(updatedData);
-      Navigator.pushNamed(context, '/profile_page');  // Navigate back to profile page
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .update(updatedData);
+      Navigator.pushNamed(
+        context,
+        '/profile_page',
+      ); // Navigate back to profile page
     }
   }
 
@@ -72,9 +83,32 @@ class _EditProfilePageState extends State<EditProfilePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 25),
+        padding: EdgeInsets.symmetric(horizontal: 0, vertical: 25),
         child: ListView(
           children: [
+            ListTile(
+              title: Align(
+                alignment: Alignment.center,
+                child: Container(
+                  height: 300,
+                  width: 300,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.grey[300],
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 10,
+                        spreadRadius: 1,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            // Username
+            _buildTextField('Username', _usernameController),
+
             // First Name
             _buildTextField('First Name', _firstNameController),
 
@@ -83,9 +117,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
             // Last Name
             _buildTextField('Last Name', _lastNameController),
-
-            // Username
-            _buildTextField('Username', _usernameController),
 
             // Program
             _buildTextField('Program', _programController),
@@ -105,13 +136,16 @@ class _EditProfilePageState extends State<EditProfilePage> {
               title: ElevatedButton(
                 onPressed: saveProfile,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF2C3E50),  // Dark Blue Background
+                  backgroundColor: Color(0xFF1A2C54), // Dark Blue Background
                   foregroundColor: Colors.white,
                   padding: EdgeInsets.symmetric(vertical: 12),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  textStyle: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 child: Text("Save Profile"),
               ),
@@ -140,17 +174,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
         child: Row(
           children: [
             Container(
-              padding: EdgeInsets.symmetric(
-                vertical: 12,
-                horizontal: 20,
-              ),
+              padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
               decoration: BoxDecoration(
-                color: Color(0xFF34495E),  // Dark Grey Blue Background
+                color: Color(0xFF1A2C54), // Dark Grey Blue Background
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(12),
+                  topLeft: Radius.circular(40),
                   topRight: Radius.circular(0),
-                  bottomLeft: Radius.circular(12),
-                  bottomRight: Radius.circular(40),
+                  bottomLeft: Radius.circular(40),
+                  bottomRight: Radius.circular(60),
                 ),
               ),
               child: Text(
@@ -189,7 +220,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
   Widget _buildInterestsSection() {
     return ListTile(
       title: Container(
-        padding: EdgeInsets.all(16),
+        padding: EdgeInsets.all(0),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(16),
@@ -209,7 +240,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                   decoration: BoxDecoration(
-                    color: Color(0xFF2C3E50), // Dark Blue
+                    color: Color(0xFF1A2C54), // Dark Blue
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(16),
                       bottomRight: Radius.circular(60),
@@ -226,7 +257,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 Spacer(),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF2C3E50),
+                    backgroundColor: Color(0xFF1A2C54),
                     foregroundColor: Colors.white,
                   ),
                   onPressed: () {
@@ -240,16 +271,17 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 SizedBox(width: 10),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF2C3E50),
+                    backgroundColor: Color(0xFF1A2C54),
                     foregroundColor: Colors.white,
                   ),
-                  onPressed: _interests.isNotEmpty
-                      ? () {
-                          setState(() {
-                            _interests.removeLast(); // Remove last interest
-                          });
-                        }
-                      : null,
+                  onPressed:
+                      _interests.isNotEmpty
+                          ? () {
+                            setState(() {
+                              _interests.removeLast(); // Remove last interest
+                            });
+                          }
+                          : null,
                   child: Icon(Icons.delete),
                 ),
               ],
@@ -263,10 +295,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   _interests.isEmpty
                       ? Text("None added yet")
                       : Column(
-                          children: _interests
-                              .map((interest) => Text(interest))
-                              .toList(),
-                        ),
+                        children:
+                            _interests
+                                .map((interest) => Text(interest))
+                                .toList(),
+                      ),
                   SizedBox(height: 10),
                   TextField(
                     controller: _interestController,
@@ -280,7 +313,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide(color: Color(0xFF2C3E50), width: 2),
+                        borderSide: BorderSide(
+                          color: Color(0xFF2C3E50),
+                          width: 2,
+                        ),
                       ),
                     ),
                   ),
