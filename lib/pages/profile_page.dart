@@ -97,7 +97,6 @@ class ProfilePage extends StatelessWidget {
                 _buildBlueSection("Program", "${userData['program']}"),
                 _buildBlueSection("Section", "${userData['section']}"),
                 _buildInterestSection(interests),
-                _buildRecentActivitiesSection(),
                 ListTile(
                   title: ElevatedButton(
                     onPressed: () {

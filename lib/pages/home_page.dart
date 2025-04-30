@@ -191,7 +191,10 @@ StreamBuilder<QuerySnapshot>(
               Navigator.pushNamed(
                 context,
                 '/event_info_page',
-                arguments: eventId,  // Pass the eventId here
+                arguments: {
+                  'eventId': eventId,
+                  'isAdmin': widget.isAdmin,
+                },  // Pass the eventId here
               );
             },
             child: Card(

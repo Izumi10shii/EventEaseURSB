@@ -16,14 +16,14 @@ class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
-
+/*
   @override
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
   }
-
+*/
   Future<void> loginUser() async {
     try {
       final userCredential = await FirebaseAuth.instance
@@ -87,6 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
+
 
                   ListTile(
                     title: Text(

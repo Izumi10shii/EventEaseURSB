@@ -24,6 +24,43 @@ class IndexPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Container(
+                width: 190,
+                height:190,
+                alignment: Alignment.center,
+                
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(color: Colors.white, width: 3)
+                ),
+
+                child:
+                Column(
+                  
+                  children: [
+                    Container(
+                      height: 30,
+                      decoration: BoxDecoration(
+                        color: Color(0xFF3A61BA),
+                        //border: Border.,
+                        borderRadius: BorderRadius.only(topLeft:Radius.circular(15), topRight: Radius.circular(15)),
+                      ),
+
+                    ),
+
+                    Text("EE",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 100,
+                  fontWeight: FontWeight.bold
+
+                ))
+                  ],
+                )
+                
+              ),
+  SizedBox(height: 10),
               Text(
                 "Event Ease",
                 style: TextStyle(
@@ -33,7 +70,7 @@ class IndexPage extends StatelessWidget {
                 ),
               ),
 
-SizedBox(height: 40,),
+SizedBox(height: 30,),
 
               Text(
                 "Welcome to Event Ease! The app that makes your registration to the Campus Events Easier.",

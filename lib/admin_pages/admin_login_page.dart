@@ -18,16 +18,18 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
   Future<void> loginAsAdmin() async {
     try {
       // Authenticate user with Firebase Authentication
-      final userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text.trim(),
-        password: passwordController.text.trim(),
-      );
+      final userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+            email: emailController.text.trim(),
+            password: passwordController.text.trim(),
+          );
 
       // Check if the user is an admin in Firestore
-      final userDoc = await FirebaseFirestore.instance
-          .collection('users')
-          .doc(userCredential.user?.uid)
-          .get();
+      final userDoc =
+          await FirebaseFirestore.instance
+              .collection('users')
+              .doc(userCredential.user?.uid)
+              .get();
 
       if (userDoc.exists) {
         final isAdmin = userDoc.data()?['role'] == 'admin';
@@ -48,23 +50,27 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
         _showErrorDialog("Error", "User document does not exist.");
       }
     } on FirebaseAuthException catch (e) {
-      _showErrorDialog("Login Failed", e.message ?? "An error occurred. Please try again.");
+      _showErrorDialog(
+        "Login Failed",
+        e.message ?? "An error occurred. Please try again.",
+      );
     }
   }
 
   void _showErrorDialog(String title, String message) {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: Text(title),
-        content: Text(message),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text("OK"),
+      builder:
+          (context) => AlertDialog(
+            title: Text(title),
+            content: Text(message),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text("OK"),
+              ),
+            ],
           ),
-        ],
-      ),
     );
   }
 
@@ -200,7 +206,11 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                               loginAsAdmin();
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text("Please fill in all fields correctly.")),
+                                SnackBar(
+                                  content: Text(
+                                    "Please fill in all fields correctly.",
+                                  ),
+                                ),
                               );
                             }
                           },
@@ -208,12 +218,37 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                         ),
                       ),
                     ),
+
                   ],
                 ),
               ),
             ),
           ),
+        
+                    Positioned(
+                      bottom: 20,
+                      right: 20,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xFF0A1D34),
+                          foregroundColor: Colors.white,
+                          padding: EdgeInsets.zero,
+                          minimumSize: Size(48, 48),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.pushNamed(
+                            context,
+                            '/login_page',
+                          ); // Fixed navigation
+                        },
+                        child: Icon(Icons.login, size: 24),
+                      ),
+                    ),
         ],
+
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class EventManagerPage extends StatelessWidget {
   const EventManagerPage({super.key});
@@ -18,11 +19,37 @@ class EventManagerPage extends StatelessWidget {
             ),
             SizedBox(height: 20),
 
-            ReminderCard(),
+            StreamBuilder<QuerySnapshot>(
+              stream: FirebaseFirestore.instance
+                  .collection('event_info')
+                  .orderBy('createdAt', descending: true)
+                  .snapshots(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                }
 
-            SizedBox(height: 20),
+                if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                  return Center(child: Text("No events found."));
+                }
 
-            ReminderCard(),
+                final events = snapshot.data!.docs;
+
+                return Column(
+                  children: events.map((doc) {
+                    final data = doc.data() as Map<String, dynamic>;
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 16),
+                      child: ReminderCard(
+                        eventId: doc.id,
+                        name: data['name'] ?? "No Title",
+                        description: data['description'] ?? "",
+                      ),
+                    );
+                  }).toList(),
+                );
+              },
+            ),
           ],
         ),
       ),
@@ -31,7 +58,16 @@ class EventManagerPage extends StatelessWidget {
 }
 
 class ReminderCard extends StatelessWidget {
-  const ReminderCard({super.key});
+  final String eventId;
+  final String name;
+  final String description;
+
+  const ReminderCard({
+    super.key,
+    required this.eventId,
+    required this.name,
+    required this.description,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +95,9 @@ class ReminderCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Art to Success: ",
+                  name,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
@@ -67,10 +105,12 @@ class ReminderCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "Introduction to Gra...",
+                  description,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
+                    color: Colors.white70,
+                    fontSize: 16,
                   ),
                 ),
               ],
@@ -88,7 +128,13 @@ class ReminderCard extends StatelessWidget {
               padding: EdgeInsets.zero,
             ),
             onPressed: () {
-              Navigator.pushNamed(context, "/admin_edit_event_page");
+              Navigator.pushNamed(
+                context,
+                "/admin_edit_event_page",
+                arguments: {
+                  'eventId': eventId,
+                },
+              );
             },
             child: Icon(Icons.edit),
           ),

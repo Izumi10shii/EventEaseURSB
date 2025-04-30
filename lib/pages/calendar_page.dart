@@ -193,6 +193,8 @@ class _CalendarPageState extends State<CalendarPage> {
               ),
             ),
             SizedBox(height: 40),
+
+            /*
             Text(
               "Upcoming Events",
               style: TextStyle(
@@ -216,8 +218,12 @@ class _CalendarPageState extends State<CalendarPage> {
                 "No events for this day.",
                 style: TextStyle(fontSize: 18),
               ),
+              */
           ],
         ),
+
+
+
       ),
     );
   }

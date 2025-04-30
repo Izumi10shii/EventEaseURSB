@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RemindersPage extends StatelessWidget {
   const RemindersPage({super.key});
@@ -8,18 +9,54 @@ class RemindersPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: ListView(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           children: [
-            Center(
+            const Center(
               child: Text(
                 "Event Reminder",
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black),
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
               ),
             ),
-            SizedBox(height: 20),
-            ReminderCard(),
-            SizedBox(height: 20),
-            ReminderCard(),
+            const SizedBox(height: 20),
+
+            // Fetch and display events
+            StreamBuilder<QuerySnapshot>(
+              stream: FirebaseFirestore.instance
+                  .collection('event_info')
+                  .orderBy('createdAt', descending: true)
+                  .snapshots(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+
+                if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                  return const Center(child: Text("No reminders found."));
+                }
+
+                final events = snapshot.data!.docs;
+
+                return Column(
+                  children: events.map((doc) {
+                    final data = doc.data() as Map<String, dynamic>;
+                    final name = data['name'] ?? '';
+                    final description = data['description'] ?? '';
+
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 20),
+                      child: ReminderCard(
+                        name: name,
+                        description: description,
+                      ),
+                    );
+                  }).toList(),
+                );
+              },
+            ),
           ],
         ),
       ),
@@ -28,30 +65,37 @@ class RemindersPage extends StatelessWidget {
 }
 
 class ReminderCard extends StatelessWidget {
-  const ReminderCard({super.key});
+  final String name;
+  final String description;
+
+  const ReminderCard({
+    super.key,
+    required this.name,
+    required this.description,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 110, // Reduced height for a more compact card
+      height: 110,
       decoration: BoxDecoration(
-        color: Color(0xFF0A1D34), // Original color
+        color: const Color(0xFF0A1D34),
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1), // Subtle shadow for modern look
+            color: Colors.black.withOpacity(0.1),
             blurRadius: 8,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           ),
         ],
       ),
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       child: Row(
         children: [
-          // Image placeholder with rounded corners and soft background
+          // Image placeholder
           Container(
-            width: 60, // Reduced image size
-            height: 60, // Reduced image size
+            width: 60,
+            height: 60,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(15),
@@ -59,44 +103,44 @@ class ReminderCard extends StatelessWidget {
                 BoxShadow(
                   color: Colors.black.withOpacity(0.1),
                   blurRadius: 5,
-                  offset: Offset(0, 2),
+                  offset: const Offset(0, 2),
                 ),
               ],
             ),
-            child: Center(
+            child: const Center(
               child: Text(
                 "IMG",
                 style: TextStyle(
-                  fontSize: 14, // Reduced text size to match the new image size
+                  fontSize: 14,
                   fontWeight: FontWeight.bold,
                   color: Colors.black54,
                 ),
               ),
             ),
           ),
-          SizedBox(width: 16), // Reduced spacing between the image and text
-          // Event details with modernized spacing
+          const SizedBox(width: 16),
+          // Event details
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Art to Success:",
-                  style: TextStyle(
+                  name,
+                  style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 18, // Reduced font size for title
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 Text(
-                  "Introduction to Graffiti...",
-                  style: TextStyle(
+                  description,
+                  style: const TextStyle(
                     color: Colors.white70,
-                    fontSize: 14, // Reduced font size for description
+                    fontSize: 14,
                   ),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
@@ -104,19 +148,8 @@ class ReminderCard extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(width: 10),
-          // Notification button with subtle design
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Color(0xFF1A2C54), // Original background color
-              foregroundColor: Colors.white,
-              shape: CircleBorder(),
-              padding: EdgeInsets.all(10), // Reduced padding
-              elevation: 3, // Subtle shadow for a modern look
-            ),
-            onPressed: () {},
-            child: Icon(Icons.notifications, size: 20), // Smaller icon
-          ),
+          const SizedBox(width: 10),
+         
         ],
       ),
     );

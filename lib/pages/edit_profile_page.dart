@@ -81,7 +81,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xFFF1F5FB),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 0, vertical: 25),
         child: ListView(
